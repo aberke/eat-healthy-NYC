@@ -10,7 +10,7 @@ Running Locally
 
 ```
 $ git clone https://github.com/aberke/eat-healthy-NYC.git
-$ cd /house-cleaners
+$ cd /eat-healthy-NYC
 ```
 
 * Create a virutual environment so that the following installations do not cause conflicts.  Make sure to reactivate this virtual environment each time you want to run the server locally.  All the following installations will be isolated in this environment.
