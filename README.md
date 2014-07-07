@@ -3,6 +3,8 @@ eat-healthy-NYC
 
 New York City Department of Health BigApps challenge
 
+It's alive: <http://eat-healthy-nyc.herokuapp.com>
+
 Running Locally
 ---
 
@@ -26,8 +28,6 @@ $ source venv/bin/activate
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
 
-Analytics
----
 
 
 data
