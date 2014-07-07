@@ -38,6 +38,9 @@ state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-
 TODO
 ---
 
+- make markers that represent markets not open today a lower opacity
+	- on creation of market, give open boolean
+
 - limit API use to just my IPs
 
 

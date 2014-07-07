@@ -16,13 +16,6 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
     </script>
 
-    <!-- my javascript -->
-    <script type="text/javascript" src="/static/map.js"></script>
-    <script type="text/javascript" src="/static/map-objects.js"></script>
-    </script>
-    <script type="text/javascript">
-      google.maps.event.addDomListener(window, 'load', function() { initialize("map-canvas"); });
-    </script>
   </head>
   <body>
 
@@ -33,6 +26,16 @@
 
     <div id="map-canvas"></div>
 
+    <button id="show-info-button" onclick="infoContainer.toggle()">SHOW/HIDE INFO</button>
+    <div id="info-container">INFO</div>
+
+    <!-- my javascript -->
+    <script type="text/javascript" src="/static/icon-factory.js"></script>
+    <script type="text/javascript" src="/static/map.js"></script>
+    <script type="text/javascript" src="/static/map-objects.js"></script>
+    <script type="text/javascript">
+      google.maps.event.addDomListener(window, 'load', function() { initialize("map-canvas"); });
+    </script>
     <script>
       // track with google analytics
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

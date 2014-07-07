@@ -1,4 +1,7 @@
 
+var iconFactory = new IconFactory();
+
+
 var MarketController = function(map) {
 
 	this.map = map;
@@ -21,16 +24,29 @@ MarketController.prototype.addMarket = function(data) {
 MarketController.prototype.marketOnSelect = function() {
 	var self = this;
 	var callback = function() {
+		// at callback, 'this' is the marker object
 		var market = this.market;
 
 		// close already open info window
+		// if (self.selectedMarket) {
+		// 	self.selectedMarket.closeInfoWindow();
+		// }
+		// self.selectedMarket = market;
+		// self.selectedMarket.openInfoWindow();
+
+		// change market selection to newly clicked on market
 		if (self.selectedMarket) {
-			self.selectedMarket.closeInfoWindow();
+			var icon = iconFactory.make(self.selectedMarket.data, false);
+			self.selectedMarket.marker.setIcon(icon);
 		}
 		self.selectedMarket = market;
-		self.selectedMarket.openInfoWindow();
 		
 		this.map.setCenter(this.getPosition());
+		this.setIcon(iconFactory.make(market.data, true));
+
+		infoContainer.element.innerHTML = self.selectedMarket.getInfoWindowContent();
+		infoContainer.show();
+
 	}
 	return callback;
 }
@@ -56,22 +72,11 @@ Market.prototype.openInfoWindow = function(data) {
 	this.infoWindow.open(this.map, this.marker);
 }
 
+
 Market.prototype.buildMarker = function() {
 	
-	var strokeWeight = (this.data.EBT == "Y") ? 4 : 0;
-	var icon = {
-		path: google.maps.SymbolPath.CIRCLE,
-		strokeWeight: strokeWeight,
-		fillColor: "#1b1464",
-		strokeColor: "#a0e4f9",
-		fillOpacity: 1,
-		scale: 8
-	};
+	var icon = iconFactory.make(this.data);
 	
-	var shape = {
-		coord: [1, 1, 1, 150, 180, 150, 180 , 1],
-		type: 'poly'
-	};
 	var position = new google.maps.LatLng(this.data.Latitude, this.data.Longitude);
 	
 	var marker = new google.maps.Marker({
@@ -79,8 +84,7 @@ Market.prototype.buildMarker = function() {
 		map: this.map,
 		draggable:false,
 		icon: icon,
-		shape: shape,
-		title: location[0]
+		title: this.data.name,
 	});
 	marker.market = this;
 	return marker;

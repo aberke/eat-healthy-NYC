@@ -1,9 +1,6 @@
 /********************************************************************************
 #--------------------------------------------------------------------------------
 #
-#	Significance Labs
-#	Brooklyn, NYC
-#
 # 	Author: Alexandra Berke (aberke)
 # 	Written: June 2014
 #
@@ -61,13 +58,28 @@ html, body {
 	background-color: #1b1464;
 	border: 3px solid #a0e4f9;
 }
+/*----------- key - */
+
+/*- info -----------*/
+#show-info-button {
+	position: absolute;
+	background-color: yellow;
+}
+#info-container {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	overflow: auto;
+	height: 150px;
+	width: 100%;
+	background-color: white;
+	z-index: 3; /* 1 more than key*/
+}
 
 
 
 
-
-
-
+/*----------- info -*/
 
 
 
