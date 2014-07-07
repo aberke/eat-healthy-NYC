@@ -1,4 +1,76 @@
 eat-healthy-NYC
-===============
+==============
 
 New York City Department of Health BigApps challenge
+
+Running Locally
+---
+
+* Clone repo 
+
+```
+$ git clone https://github.com/aberke/eat-healthy-NYC.git
+$ cd /house-cleaners
+```
+
+* Create a virutual environment so that the following installations do not cause conflicts.  Make sure to reactivate this virtual environment each time you want to run the server locally.  All the following installations will be isolated in this environment.
+
+```
+$ pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+```
+
+* Install dependencies: ```$ pip install -r requirements.txt``` (may need to run with sudo)
+
+* Run server ```python run.py``` and visit <http://127.0.0.1:5000>
+
+
+Analytics
+---
+
+
+data
+---
+state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+
+
+TODO
+---
+
+- limit API use to just my IPs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

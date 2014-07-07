@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+
+    <link href="/static/map.css" rel="stylesheet">
+
+    <!-- google hosted jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- google maps api asset with key -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
+    </script>
+
+    <!-- my javascript -->
+    <script type="text/javascript" src="static/map.js"></script>
+    <script type="text/javascript" src="static/map-objects.js"></script>
+    </script>
+    <script type="text/javascript">
+      google.maps.event.addDomListener(window, 'load', function() { initialize("map-canvas"); });
+    </script>
+  </head>
+  <body>
+
+    <div id="key">
+      <p class='key-item' id='key-market'>Market</p>
+      <p class='key-item' id='key-ebt'>EBT</p>
+    </div>
+
+    <div id="map-canvas"></div>
+  </body>
+</html>
