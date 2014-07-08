@@ -61,11 +61,15 @@ html, body {
 /*----------- key - */
 
 /*- info -----------*/
-#show-info-button {
+#get-directions-button {
+	right: 0;
+}
+#show-info-button, #get-directions-button {
 	position: absolute;
 	background-color: yellow;
+	padding: 5px;
 }
-#info-container {
+#info-container, #directions-container {
 	display: none;
 	position: absolute;
 	bottom: 0;
@@ -76,7 +80,22 @@ html, body {
 	z-index: 3; /* 1 more than key*/
 }
 
-
+#get-directions-container {
+	display: inline-block;
+}
+#directions-container {
+	background-color: yellow;
+	z-index: 4;
+	top: 20px;
+}
+button.close {
+	color: white;
+	background-color: red;
+	padding: 3px;
+	margin: 3px;
+	float: right;
+	font-weight: bold;
+}
 
 
 /*----------- info -*/

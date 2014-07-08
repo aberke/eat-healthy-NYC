@@ -44,9 +44,9 @@ MarketController.prototype.marketOnSelect = function() {
 		this.map.setCenter(this.getPosition());
 		this.setIcon(iconFactory.make(market.data, true));
 
-		infoContainer.element.innerHTML = self.selectedMarket.getInfoWindowContent();
-		infoContainer.show();
+		infoContainer.showMarketContent(self.selectedMarket.getInfoWindowContent());
 
+		console.log('selected', self.selectedMarket)
 	}
 	return callback;
 }

@@ -26,8 +26,25 @@
 
     <div id="map-canvas"></div>
 
-    <button id="show-info-button" onclick="infoContainer.toggle()">SHOW/HIDE INFO</button>
-    <div id="info-container">INFO</div>
+    <div id="info-container">
+      <div id='get-directions-container'>
+        Get Directions:
+        <button onclick="infoContainer.getDirections('WALKING')">walking</button>
+        <button onclick="infoContainer.getDirections('DRIVING')">driving</button>
+        <button onclick="infoContainer.getDirections('BICYCLING')">biking</button>
+        <button onclick="infoContainer.getDirections('TRANSIT')">transit</button>
+      </div>
+      <button class="close" onclick="infoContainer.hide()">X</button>
+
+      <div id='market-container'>INFO</div>
+      <div id="directions-container">
+        DIRECTIONS
+        <button class="close" onclick="infoContainer.hideDirections()">X</button>
+        <div id="directions-panel"></div>
+      </div>
+
+    </div>
+
 
     <!-- my javascript -->
     <script type="text/javascript" src="/static/icon-factory.js"></script>

@@ -2,7 +2,6 @@
 var DATA_URL = '/data';
 var map;
 var marketController;
-
 var clientLocation;
 
 
@@ -78,7 +77,8 @@ function initialize(mapEltId) {
 	});
 
 	getGeoLocation(function(position) {
-		map.setCenter(position);
+		clientLocation = position;
+		map.setCenter(clientLocation);
 
 		var icon = {
 			path: google.maps.SymbolPath.CIRCLE,
@@ -95,34 +95,38 @@ function initialize(mapEltId) {
 		};
 	
 		var marker = new google.maps.Marker({
-			position: position,
+			position: clientLocation,
 			map: map,
 			draggable:false,
 			icon: icon,
 			title: 'Your Location'
 		});
 	});
-}
 
-
-var directionsDisplay = new google.maps.DirectionsRenderer();
-var directionsService = new google.maps.DirectionsService();
-
-function getDirections() {
-
+	setupDirections();
 }
 
 
 var InfoContainer = function() {
 	this.visible;
 	this.element = document.getElementById('info-container');
+
+	this.marketContainer = document.getElementById('market-container');
+	this.directionsContainer = document.getElementById('directions-container');
+	this.directionsPanel = document.getElementById('directions-panel');
 	this.hide();
+}
+InfoContainer.prototype.showMarketContent = function(contentString) {
+	this.hideDirections();
+	this.marketContainer.innerHTML = contentString;
+	this.show();
 }
 InfoContainer.prototype.show = function() {
 	this.element.style.display = "block";
 	this.visible = true;
 }
 InfoContainer.prototype.hide = function() {
+	this.hideDirections();
 	this.element.style.display = "none";
 	this.visible = false;
 }
@@ -130,8 +134,47 @@ InfoContainer.prototype.toggle = function() {
 	this.visible ? this.hide() : this.show();
 }
 
+InfoContainer.prototype.showDirections = function() {
+	this.directionsContainer.style.display = "block";
+}
+InfoContainer.prototype.hideDirections = function() {
+	directionsRenderer.set('directions', null);
+	this.directionsContainer.style.display = "none";
+}
+var TRAVELMODES = {
+	"DRIVING": google.maps.TravelMode.DRIVING,
+	"WALKING": google.maps.TravelMode.WALKING,
+	"BICYCLING": google.maps.TravelMode.BICYCLING,
+	"TRANSIT": google.maps.TravelMode.TRANSIT,
+}
+InfoContainer.prototype.getDirections = function(travelMode) {
+	console.log('getDirections', marketController.selectedMarket);
+
+	var start = clientLocation;
+	var end = marketController.selectedMarket.marker.position;
+	var request = {
+		origin: start,
+		destination: end,
+		travelMode: (TRAVELMODES[travelMode] || google.maps.TravelMode.WALKING),
+	};
+	directionsService.route(request, function(response, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+		  	directionsRenderer.setDirections(response);
+			map.setCenter(clientLocation);
+		}
+	});
+	this.showDirections();
+}
+
+var directionsService = new google.maps.DirectionsService();
+var directionsRenderer = new google.maps.DirectionsRenderer();
+
 var infoContainer = new InfoContainer();
 
+var setupDirections = function() {
+	directionsRenderer.setMap(map);
+	directionsRenderer.setPanel(infoContainer.directionsPanel);
+}
 
 
 
