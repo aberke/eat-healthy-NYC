@@ -38,10 +38,15 @@ state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-
 TODO
 ---
 
+- normalize date/time data
+	- IMPLEMENT normalize_datetime
+
 - make markers that represent markets not open today a lower opacity
 	- on creation of market, give open boolean
 
 - limit API use to just my IPs
+
+- /admin page for creating new competitions
 
 
 

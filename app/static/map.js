@@ -24,7 +24,8 @@ function buildMap(mapEltId) {
 	var styles = [
 	  {
 		stylers: [
-		  { hue: "#586065" },
+		  // { hue: "#586065" },
+		  { hue: "red" },
 		  { saturation: -100 }
 		]
 	  },{
@@ -71,7 +72,7 @@ function initialize(mapEltId) {
 		dataType: "json",
 		url: DATA_URL,
 		data: {},
-		success: function(ret) { 
+		success: function(ret) {
 			marketController.init(ret.data);
 		},
 	});

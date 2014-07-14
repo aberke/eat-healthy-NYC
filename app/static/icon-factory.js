@@ -11,7 +11,7 @@ var IconFactory = function() {
 }
 IconFactory.prototype.make = function(data, isSelected) {
 	
-	var strokeWeight = (data.EBT == "Y") ? 4 : 0;
+	var strokeWeight = data.EBT ? 4 : 0;
 	var scale = isSelected ? 12 : 6;
 	var icon = {
 		path: google.maps.SymbolPath.CIRCLE,

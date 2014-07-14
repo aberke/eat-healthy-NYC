@@ -5,38 +5,46 @@
 # 	Author: Alexandra Berke (aberke)
 # 	Written: Summer 2014
 #
+# End up returning list of dictionaries of form:
+# ----------------------------------------------
+# "CSWCKs": false,
+# "City": "New York",
+# "Contact": "Chelsea Whittaker",
+# "EBT": true,
+# "FMNP": true,
+# "Latitude": "40.73712",
+# "Longitude": "-73.99029",
+# "Market Link": "http://www.grownyc.org",
+# "Phone": "2127887476",
+# "State": "NY",
+# "Stellar": false,
+# "YR": true,
+# "Zip": "10003",
+# "county": "Manhattan",
+# "days": {
+# "1": "8am - 6pm",
+# "3": "8am - 6pm",
+# "5": "8am - 6pm",
+# "6": "8am - 6pm"
+# },
+# "location": "Broadway & E 17th St",
+# "name": "Union Square Greenmarket",
+# "operation-hours": "M/W/F/Sat  8am-6pm",
+# "operation-months": "Year-round"
+#
+#
+# state-farmers-markets IS not (verified) a complete superset of farmers-markets-2014
 #
 #--------------------------------------------------------------------------------
 #*********************************************************************************
 
 
 import csv
-
+import re
+import sanitizers
 
 DATA_FILES = ['./data/farmers-markets-2014.csv', './data/state-farmers-markets.csv']
-# keynames that are the compromise of multiple keynames
-KEYNAMES = ["county", "name", "location", "hours", "EBT"]
 
-KEYNAME_CONVERTER_DICT = {
-	# a bough has the same boundaries as a county of the state
-	"Borough": "county",
-	"County": "county",
-
-	"Market Name": "name",
-
-	"Location": "location",
-	"Street Address": "location",
-
-	"Hours of operation": "hours",
-	"Operation Hours": "hours",
-
-	"Accept EBT": "EBT",
-	"EBT/SNAP": "EBT",
-}
-VALUE_CONVERTER_DICT = {
-	"Yes": "Y",
-	"No": "No",
-}
 
 def get_csv_data(filename):
 	""" 
@@ -59,13 +67,7 @@ def csv_data_to_dict(keyname_list, data_rows):
 		d = {}
 		for i in range(len(keyname_list)):
 			keyname = keyname_list[i]
-			if keyname in KEYNAME_CONVERTER_DICT:
-				keyname = KEYNAME_CONVERTER_DICT[keyname]
-
 			value = data_row[i]
-			if value in VALUE_CONVERTER_DICT:
-				value = VALUE_CONVERTER_DICT[value]
-
 			d[keyname] = value
 		data.append(d)
 	return data
@@ -78,10 +80,7 @@ def combine_data(data_sets):
 	master_data = {} # {name: data_set}
 	for data_set in data_sets:
 		for datum in data_set:
-			if not ('name' in datum and datum['name']):
-				raise Exception("There is a farmers-market data_set without key 'name' or 'Market Name'")
-			
-			market_name = datum['name']
+			market_name = sanitizers.get_market_name(datum)
 			if market_name in master_data:
 				master_data[market_name].update(datum)
 			else:
@@ -95,7 +94,11 @@ def get_data():
 		(keyname_list, data_rows) = get_csv_data(filename)
 		data = csv_data_to_dict(keyname_list, data_rows)
 		datasets.append(data)
-	return combine_data(datasets)
+
+	# must combine data before cleaning to properly normalize date data
+	data = combine_data(datasets)
+	data = sanitizers.clean(data)
+	return data
 
 
 
