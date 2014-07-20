@@ -20,6 +20,7 @@ from datetime import date
 # this is what's returned
 KEYNAME_VALUE_DICTIONARY = {
 	"Address Line 1": str,
+	"address-line-1": str,
 	"CSWCKs": bool,
 	"City": str,
 	"Contact": str,
@@ -31,7 +32,7 @@ KEYNAME_VALUE_DICTIONARY = {
 	"Phone": str,
 	"State": str,
 	"Stellar": bool,
-	"Zip": str,
+	"zipcode": str,
 	"county": str,
 	"location": str,
 	"name": str,
@@ -49,6 +50,7 @@ KEYNAME_VALUE_DICTIONARY = {
 KEYNAME_CONVERTER_DICT = {
 	"Market Name": "name",
 	"Address Line 1": "address-line-1",
+	"Zip": "zipcode",
 
 	# a bough has the same boundaries as a county of the state
 	"Borough": "county",

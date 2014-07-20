@@ -19,13 +19,13 @@
 # "State": "NY",
 # "Stellar": false,
 # "YR": true,
-# "Zip": "10003",
+# "zipcode": "10003",
 # "county": "Manhattan",
 # "days": {
-# "1": "8am - 6pm",
-# "3": "8am - 6pm",
-# "5": "8am - 6pm",
-# "6": "8am - 6pm"
+# 	"1": "8am - 6pm",
+# 	"3": "8am - 6pm",
+# 	"5": "8am - 6pm",
+# 	"6": "8am - 6pm"
 # },
 # "location": "Broadway & E 17th St",
 # "name": "Union Square Greenmarket",

@@ -30,8 +30,12 @@ data = get_data()
 
 
 @app.route('/')
-def base(cleanerName=None):
+def base():
 	return send_file('static/map.html')
+
+@app.route('/info')
+def info():
+	return send_file('static/info.html')
 
 
 @app.route('/data')

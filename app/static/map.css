@@ -2,14 +2,13 @@
 #--------------------------------------------------------------------------------
 #
 # 	Author: Alexandra Berke (aberke)
-# 	Written: June 2014
+# 	Written: Summer 2014
 #
 #
 	colors:
-		orange: #ef7625 
-		dark-blue: #29abe2 
-		light-blue: #a0e4f9 
-		purple: #1b1464
+		beige: #f9f4e5;
+		grey: #56555a;
+		green: #22b473;
 #--------------------------------------------------------------------------------
 #********************************************************************************/
 
@@ -28,6 +27,27 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
+body {
+	position: absolute; /*to avoid gaps between map canvas and body*/
+}
+.btn {
+	cursor: pointer;
+}
+
+
+/*shown until google maps loads*/
+#loading-map-container {
+	text-align: center;
+	padding: 100px 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #f9f4e5;
+	color: #002c45;
+	z-index: 100;
+}
+
+/*behind loading-map until google maps loads*/
 
 #map-canvas {
 	width: 100%;
@@ -69,36 +89,100 @@ html, body {
 	background-color: yellow;
 	padding: 5px;
 }
-#info-container, #directions-container {
+#market-info-outter-container {
 	display: none;
 	position: absolute;
 	bottom: 0;
 	overflow: auto;
-	height: 150px;
+	height: 45%;
 	width: 100%;
-	background-color: white;
+	background-color: #f9f4e5;
 	z-index: 3; /* 1 more than key*/
 }
-
-#get-directions-container {
+#market-info-container {
+	margin: 10px;
+}
+.close-btn {
+	float: right;
+	margin: 10px;
+}
+#market-info-container h1,
+#market-info-container h2 {
+	font-size: 18px;
+}
+#market-info-container h1 {
+	color: #22b473;
+}
+#market-info-container h2 {
+	color: black;
+}
+#market-info-container p {
+	color: #56555a;
+	font-size: 15px;
+}
+#market-info-container p#market-county,
+#market-info-container p#market-zipcode {
 	display: inline-block;
+	margin-right: 2px;
+}
+#directions-header-container {
+	margin: 5px 0;
+}
+#directions-title {
+	display: inline-block;
+	margin: 7px 0;
+}
+.directions-icon {
+	display: inline-block;
+	float: right;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	background-color: black;
+	margin-left: 6px;
 }
 #directions-container {
-	background-color: yellow;
-	z-index: 4;
-	top: 20px;
+	margin-bottom: 20px;
 }
-button.close {
-	color: white;
-	background-color: red;
-	padding: 3px;
-	margin: 3px;
-	float: right;
+#hours-table {
+	border-spacing: 0;
+	background-color: white;
+	border-radius: 8px;
+	width: 100%;
+}
+#hours-table td{
+	text-align: center;
+	border-right: 2px solid #56555a;
+	padding: 5px 3px;
+}
+#hours-table td:last-child {
+	border-right: none;
+}
+#hours-table td.open {
+	background-color: #22b473;
+}
+#hours-table #day-names-row td {
+	font-size: 15px;
 	font-weight: bold;
+	border-bottom: 2px solid #56555a;
+}
+#hours-table #day-hours-row td {
+	font-size: 12px;
+}
+#hours-table tr#day-names-row td:first-child {
+	border-top-left-radius: 8px;
+}
+#hours-table tr#day-hours-row td:first-child {
+	border-bottom-left-radius: 8px;
+}
+#hours-table tr#day-names-row td:last-child {
+	border-top-right-radius: 8px;
+}
+#hours-table tr#day-hours-row td:last-child {
+	border-bottom-right-radius: 8px;
 }
 
 
 /*----------- info -*/
-
 
 

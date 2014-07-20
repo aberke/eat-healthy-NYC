@@ -38,18 +38,30 @@ state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-
 TODO
 ---
 
-- normalize date/time data
-	- IMPLEMENT normalize_datetime
+- on get directions:
+	- center map to where you are location
+	- zoom out to show both destination and current location
 
-- make markers that represent markets not open today a lower opacity
-	- on creation of market, give open boolean
+- Market.prototype.setOpenClosedStatus
+	- uncomment and use <h2 id='open-closed-title'>OPEN | CLOSED</h2>
+
+- do better job sanitizing hours data
+
+- on creation of market, give open boolean
 
 - limit API use to just my IPs
 
 - /admin page for creating new competitions
 
 
+DESIGN TODO
+---
 
+- Nicer loading screen
+
+- design for directions
+
+- design for marker icon key
 
 
 

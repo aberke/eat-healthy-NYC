@@ -19,6 +19,10 @@
   </head>
   <body>
 
+    <div id='loading-map-container'>
+      <h1>Loading map...</h1>
+    </div>
+
     <div id="key">
       <p class='key-item' id='key-market'>Market</p>
       <p class='key-item' id='key-ebt'>EBT</p>
@@ -26,32 +30,86 @@
 
     <div id="map-canvas"></div>
 
-    <div id="info-container">
-      <div id='get-directions-container'>
-        Get Directions:
-        <button onclick="infoContainer.getDirections('WALKING')">walking</button>
-        <button onclick="infoContainer.getDirections('DRIVING')">driving</button>
-        <button onclick="infoContainer.getDirections('BICYCLING')">biking</button>
-        <button onclick="infoContainer.getDirections('TRANSIT')">transit</button>
-      </div>
-      <button class="close" onclick="infoContainer.hide()">X</button>
 
-      <div id='market-container'>INFO</div>
+  <div id='market-info-outter-container'>
+    <span onclick="marketInfoController.hide()" class='close-btn btn'>X</span>
+    
+    <div id='market-info-container'>
+
+      <h1 id='market-name'>MARKET NAME FARMER'S MARKET</h1>
+      <p id='market-location'>LOCATION</p> 
+      <p id='market-county'>COUNTY</p>
+      <p id='market-zipcode'>ZIPCODE</p>
+
+      <div id='directions-header-container'>
+        <h2 id='directions-title'>DIRECTIONS</h2>
+        <img onclick="marketInfoController.getDirections('WALKING')" class='directions-icon' src="">
+        <img onclick="marketInfoController.getDirections('DRIVING')" class='directions-icon' src="">
+        <img onclick="marketInfoController.getDirections('BICYCLING')" class='directions-icon' src="">
+        <img onclick="marketInfoController.getDirections('TRANSIT')" class='directions-icon' src="">
+      </div>
+
       <div id="directions-container">
-        DIRECTIONS
-        <button class="close" onclick="infoContainer.hideDirections()">X</button>
+        <span onclick="marketInfoController.hideDirections()" class='close-btn btn'>X</span>
         <div id="directions-panel"></div>
       </div>
+
+
+      <!-- TODO uncomment and Market.prototype.setOpenClosedStatus -->
+      <!-- <h2 id='open-closed-title'>OPEN | CLOSED</h2> -->
+      <table id='hours-table'>
+        <tr id='day-names-row'>
+          <td id='day-name-0'>SUN</td>
+          <td id='day-name-1'>MON</td>
+          <td id='day-name-2'>TUE</td>
+          <td id='day-name-3'>WED</td>
+          <td id='day-name-4'>THU</td>
+          <td id='day-name-5'>FRI</td>
+          <td id='day-name-6'>SAT</td>
+        </tr>
+        <tr id='day-hours-row'>
+          <td id='day-hours-0'>8:30am - 6:30pm</td>
+          <td id='day-hours-1'>DAY</td>
+          <td id='day-hours-2'>DAY</td>
+          <td id='day-hours-3'>DAY</td>
+          <td id='day-hours-4'>8:30am - 6:30pm</td>
+          <td id='day-hours-5'>DAY</td>
+          <td id='day-hours-6'>DAY</td>
+        </tr>
+      </table>
+      <p id='operation-hours'>operation-hours if bad-hours-data</p>
+      <p id='operation-months'>operation-months</p>
+
+      <!-- hidden if market does not have EBT -->
+      <h2 id='market-EBT'>EBT</h2> 
+
+    </div>
+  </div>
+
+    <div id="info-outter-container">
+      <div id='get-directions-container'>
+        Get Directions:
+        <button onclick="marketInfoController.getDirections('WALKING')">walking</button>
+        <button onclick="marketInfoController.getDirections('DRIVING')">driving</button>
+        <button onclick="marketInfoController.getDirections('BICYCLING')">biking</button>
+        <button onclick="marketInfoController.getDirections('TRANSIT')">transit</button>
+      </div>
+      <button class="close" onclick="marketInfoController.hide()">X</button>
+
+      <div id='market-container'>INFO</div>
 
     </div>
 
 
     <!-- my javascript -->
-    <script type="text/javascript" src="/static/icon-factory.js"></script>
-    <script type="text/javascript" src="/static/map.js"></script>
-    <script type="text/javascript" src="/static/map-objects.js"></script>
+    <script type="text/javascript" src="/static/js/marker-factory.js"></script>
+    <script type="text/javascript" src="/static/js/map.js"></script>
+    <script type="text/javascript" src="/static/js/map-objects.js"></script>
+    <script type="text/javascript" src="/static/js/market-info-controller.js"></script>
     <script type="text/javascript">
-      google.maps.event.addDomListener(window, 'load', function() { initialize("map-canvas"); });
+      google.maps.event.addDomListener(window, 'load',function() {
+          initialize(); 
+      });
     </script>
     <script>
       // track with google analytics
