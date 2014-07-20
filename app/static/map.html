@@ -10,6 +10,9 @@
 
     <link href="/static/map.css" rel="stylesheet">
 
+    <!-- FONT: Cabin condensed bold -- load from google -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:700' rel='stylesheet' type='text/css'>
+
     <!-- google hosted jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- google maps api asset with key -->
@@ -24,8 +27,10 @@
     </div>
 
     <div id="key">
-      <p class='key-item' id='key-market'>Market</p>
-      <p class='key-item' id='key-ebt'>EBT</p>
+      <img src="/static/icons/pin_mkt.png" class='key-icon'>
+      <span class='key-title'>Market</span>
+      <img src="/static/icons/pin_ebt.png" class='key-icon'>
+      <span class='key-title'>EBT</span>
     </div>
 
     <div id="map-canvas"></div>
@@ -86,20 +91,6 @@
     </div>
   </div>
 
-    <div id="info-outter-container">
-      <div id='get-directions-container'>
-        Get Directions:
-        <button onclick="marketInfoController.getDirections('WALKING')">walking</button>
-        <button onclick="marketInfoController.getDirections('DRIVING')">driving</button>
-        <button onclick="marketInfoController.getDirections('BICYCLING')">biking</button>
-        <button onclick="marketInfoController.getDirections('TRANSIT')">transit</button>
-      </div>
-      <button class="close" onclick="marketInfoController.hide()">X</button>
-
-      <div id='market-container'>INFO</div>
-
-    </div>
-
 
     <!-- my javascript -->
     <script type="text/javascript" src="/static/js/marker-factory.js"></script>
@@ -111,6 +102,15 @@
           initialize(); 
       });
     </script>
+
+    <!-- add fastclick -->
+    <script type="text/javascript" src="/static/js/vendor/fastclick.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+      FastClick.attach(document.body);
+    }, false);
+    </script>
+
     <script>
       // track with google analytics
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

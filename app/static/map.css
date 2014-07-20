@@ -12,16 +12,13 @@
 #--------------------------------------------------------------------------------
 #********************************************************************************/
 
-@font-face {
-    font-family: Montserrat-Regular;
-    src: url(/static/fonts/Montserrat-Regular.ttf);
-}
 
 * {
 	margin: 0;
 	padding: 0;
 	border: none;
-	font-family: Monteserrat-Regular, Arial;
+	/*defined font in stylesheet loaded from google*/
+	font-family: 'Cabin Condensed', sans-serif;
 }
 html, body {
 	height: 100%;
@@ -64,19 +61,21 @@ body {
 	z-index: 2;
 	bottom: 0;
 	right: 0;
+	font-size: 13px;
+	padding: 2px 2px 0px 5px;
+	background-color: rgba(255,255,255,0.7);
+	border: 1px solid gray;
+	border-bottom: none;
+	border-right: none;
 }
-.key-item {
+.key-icon {
+	width: 16px;
+}
+.key-title {
 	display: inline-block;
-	color: white;
-	font-size: 12px;
-	padding: 5px;
-}
-#key-market {
-	background-color: #1b1464;
-}
-#key-ebt {
-	background-color: #1b1464;
-	border: 3px solid #a0e4f9;
+	vertical-align: top;
+	margin: 6px 0;
+
 }
 /*----------- key - */
 
@@ -104,7 +103,7 @@ body {
 }
 .close-btn {
 	float: right;
-	margin: 10px;
+	padding: 10px;
 }
 #market-info-container h1,
 #market-info-container h2 {
@@ -153,7 +152,8 @@ body {
 #hours-table td{
 	text-align: center;
 	border-right: 2px solid #56555a;
-	padding: 5px 3px;
+	padding: 2%;
+	width: 5%;
 }
 #hours-table td:last-child {
 	border-right: none;

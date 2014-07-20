@@ -33,10 +33,6 @@ data = get_data()
 def base():
 	return send_file('static/map.html')
 
-@app.route('/info')
-def info():
-	return send_file('static/info.html')
-
 
 @app.route('/data')
 def GETdata():

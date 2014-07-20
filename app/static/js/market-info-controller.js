@@ -4,7 +4,6 @@ var MarketInfoController = function() {
 	this.container = document.getElementById('market-info-outter-container');
 	// this.element = document.getElementById('info-container');
 
-	this.marketContainer = document.getElementById('market-container');
 	this.directionsContainer = document.getElementById('directions-container');
 	this.directionsPanel = document.getElementById('directions-panel');
 	this.hide();
@@ -81,9 +80,7 @@ MarketInfoController.prototype.getDirections = function(travelMode) {
 
 MarketInfoController.prototype.showMarketContent = function(data, contentString) {
 	this.hideDirections();
-	this.marketContainer.innerHTML = contentString;
 
-	console.log('showMarketContent', data)
 	this.infoElements.marketName.innerHTML = cleanString(data.name);
 	this.infoElements.marketLocation.innerHTML = cleanString(data.location);
 	this.infoElements.marketCounty.innerHTML = cleanString(data.county);
