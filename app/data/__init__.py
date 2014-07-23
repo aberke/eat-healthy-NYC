@@ -43,7 +43,7 @@ import csv
 import re
 import sanitizers
 
-DATA_FILES = ['./data/farmers-markets-2014.csv', './data/state-farmers-markets.csv']
+DATA_FILES = ['./app/data/farmers-markets-2014.csv', './app/data/state-farmers-markets.csv']
 
 
 def get_csv_data(filename):

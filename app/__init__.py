@@ -23,7 +23,7 @@ app = Flask('app')
 app.config.from_object('config')
 Compress(app)
 
-from data import get_data
+from app.data import get_data
 data = get_data()
 
 #---------------------------------------------- Configuration #

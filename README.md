@@ -38,12 +38,9 @@ state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-
 TODO
 ---
 
-- move data into app
-
 - refactor javascript
 
 - on get directions:
-	- make selected market bigger
 	- center map to where you are location
 	- zoom out to show both destination and current location
 
@@ -65,8 +62,6 @@ DESIGN TODO
 - Nicer loading screen
 
 - design for directions
-
-- design for marker icon key
 
 
 
