@@ -135,9 +135,11 @@ body {
 	display: inline-block;
 	float: right;
 	border-radius: 50%;
-	height: 30px;
-	width: 30px;
-	background-color: black;
+	height: 20px;
+	width: 20px;
+	border: 3px solid black;
+	padding: 4px;
+	background-color: white;
 	margin-left: 6px;
 }
 #directions-container {
