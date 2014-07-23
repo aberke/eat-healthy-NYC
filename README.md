@@ -38,14 +38,19 @@ state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-
 TODO
 ---
 
+- do better with open/closed status
+	- check for open-date/close-date
+	- better date parsing
+	- Market.prototype.setOpenClosedStatus
+		- uncomment and use <h2 id='open-closed-title'>OPEN | CLOSED</h2>
+
+
 - refactor javascript
 
 - on get directions:
 	- center map to where you are location
 	- zoom out to show both destination and current location
 
-- Market.prototype.setOpenClosedStatus
-	- uncomment and use <h2 id='open-closed-title'>OPEN | CLOSED</h2>
 
 - do better job sanitizing hours data
 

@@ -53,12 +53,26 @@ var Market = function(map, data) {
 	*/
 	this.map = map;
 	this.data = data;
+	this.setOpenClosedStatus();
+	console.log('market data', data)
 
 	this.marker = this.buildMarker(data);
 }
 Market.prototype.setOpenClosedStatus = function() {
 	// determine if market is open right now
+	if (this.data['bad-hours-data'] || this.data['bad-date-data']) {
+		return;
+	}
 
+	var now = new Date();
+	var today = now.getDay();
+	if (today in this.data['days']) {
+		this.data.closed = false;
+		this.data.open = true;
+	} else {
+		this.data.closed = true;
+		this.data.open = false;
+	}
 }
 
 Market.prototype.buildMarker = function() {
