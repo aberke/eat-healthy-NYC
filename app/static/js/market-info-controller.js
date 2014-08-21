@@ -18,7 +18,15 @@ var MarketInfoController = function() {
 		operationMonths: document.getElementById('operation-months'),
 		dayNames: {},
 		dayHours: {},
+
+		// payment options
 		EBT: document.getElementById('market-EBT'),
+		WIC: document.getElementById('market-WIC'),
+		FMNP: document.getElementById('market-FMNP'),
+
+		// market link to specified market's website (requested by growNYC)
+		link: document.getElementById('market-link'),
+		linkTag: document.getElementById('market-link-tag'), // the <a></a> element with the link
 	}
 	for (var i=0; i<7; i++) {
 		this.infoElements.dayNames[i] = document.getElementById('day-name-' + i);
@@ -26,12 +34,15 @@ var MarketInfoController = function() {
 	}
 	console.log(this.infoElements)
 }
+
+// hiding/showing elements with css selector .hidden (see map.css)
 MarketInfoController.prototype.showElement = function(element) {
-	element.style.display = "block";
+	element.className = element.className.replace(/\ *hidden/g, '');
 }
 MarketInfoController.prototype.hideElement = function(element) {
-	element.style.display = "none";
+	element.className += " hidden";
 }
+
 MarketInfoController.prototype.show = function() {
 	this.showElement(this.container);
 	this.visible = true;
@@ -111,13 +122,22 @@ MarketInfoController.prototype.showMarketContent = function(data, contentString)
 		this.showElement(this.infoElements.hoursTable);
 	}
 
-	if (data.EBT) {
-		this.showElement(this.infoElements.EBT);
-	} else {
-		this.hideElement(this.infoElements.EBT);
-	}
-
-
+	/*- payment options: have boolean values, show if they are true in this data ----*/
+	// if data.[paymentOption]: show infoElements.paymentOption, else: hide infoElements.paymentOption
+	data.EBT ? this.showElement(this.infoElements.EBT) : this.hideElement(this.infoElements.EBT);
+	data.WIC ? this.showElement(this.infoElements.WIC) : this.hideElement(this.infoElements.WIC);
+	data.FMNP ? this.showElement(this.infoElements.FMNP) : this.hideElement(this.infoElements.FMNP);
+	
+	/*------------------------------------------------------------- payment options -*/
+	
+	/*- setting Market Link info: data['Market Link'] is a string, '' if no data ----*/
+	// if data['Market Link']: show infoElements.link, else: hide infoElements.link
+	data['Market Link'] ? this.showElement(this.infoElements.link) : this.hideElement(this.infoElements.link);
+	
+	// set market-link link href and text to this market's 'Market Link'
+	this.infoElements.linkTag.href = data['Market Link'];
+	this.infoElements.linkTag.innerHTML = data['Market Link'];
+	/*------------------------------------------------- setting Market Link info ----*/
 
 
 

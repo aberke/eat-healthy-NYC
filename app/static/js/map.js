@@ -1,8 +1,15 @@
 
+
+/* When developing, uncomment DEVELOPMENT = true to center map's location on Union Square, etc */
+var DEVELOPMENT = false;
+// DEVELOPMENT = true;
+
+
 var DATA_URL = '/data';
 var map;
 var marketController;
 var clientLocation;
+
 
 
 
@@ -82,7 +89,13 @@ function initialize() {
 		},
 	});
 
+	// initialize user marker and map center at user location
 	getGeoLocation(function(position) {
+
+		// if in DEVELOPMENT mode, put position on Union Square farmers market
+		if (DEVELOPMENT) {
+			position = new google.maps.LatLng("40.73712", "-73.99029");
+		}
 		clientLocation = position;
 		map.setCenter(clientLocation);
 

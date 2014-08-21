@@ -80,6 +80,10 @@ body {
 /*----------- key - */
 
 /*- info -----------*/
+/* MarketInfoController hideElement/showElement functions use .hidden*/
+.hidden {
+	display: none !important;
+}
 #get-directions-button {
 	right: 0;
 }
@@ -89,7 +93,6 @@ body {
 	padding: 5px;
 }
 #market-info-outter-container {
-	display: none;
 	position: absolute;
 	bottom: 0;
 	overflow: auto;
@@ -182,6 +185,13 @@ body {
 }
 #hours-table tr#day-hours-row td:last-child {
 	border-bottom-right-radius: 8px;
+}
+.market-payment-option {
+	display: inline-block;
+	margin-right: 15px;
+}
+#market-hours-disclaimer {
+	margin-top: 10px;
 }
 
 

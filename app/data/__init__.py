@@ -33,7 +33,7 @@
 # "operation-months": "Year-round"
 #
 #
-# state-farmers-markets IS not (verified) a complete superset of farmers-markets-2014
+# state-farmers-markets IS NOT a complete superset of farmers-markets-2014
 #
 #--------------------------------------------------------------------------------
 #*********************************************************************************

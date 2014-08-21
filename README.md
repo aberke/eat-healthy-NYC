@@ -5,10 +5,28 @@ New York City Department of Health BigApps challenge
 
 It's alive: <http://eat-healthy-nyc.herokuapp.com>
 
+
+Functionality
+---
+
+- Every farmers' market in New York State is on this map
+
+- As the key indicates, from a quick glance users can see which markets accept EBT and which don't
+
+- Markets that are open today are opaque and highlighted, vs markets that are closed today are less opaque
+	- So the markets that are open today are easy to see!
+
+- On click of a market you can view its hours and more info
+
+- You can get directions (walking/biking/transit/car) from your current location to a market
+
+
 Running Locally
 ---
 
-* Clone repo 
+**Setting up/Running for the first time**
+
+* Clone/fork repo 
 
 ```
 $ git clone https://github.com/aberke/eat-healthy-NYC.git
@@ -18,16 +36,26 @@ $ cd /eat-healthy-NYC
 * Create a virutual environment so that the following installations do not cause conflicts.  Make sure to reactivate this virtual environment each time you want to run the server locally.  All the following installations will be isolated in this environment.
 
 ```
-$ pip install virtualenv
+$ sudo pip install virtualenv
 $ virtualenv venv
 $ source venv/bin/activate
 ```
 
-* Install dependencies: ```$ pip install -r requirements.txt``` (may need to run with sudo)
-
+* Install dependencies: ```$ pip install -r requirements.txt```
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
 
+**Running again**
+
+* Start virtual environment ```$ source venv/bin/activate```
+* Run server ```python run.py``` and visit <http://127.0.0.1:5000>
+
+
+**Development Mode**
+
+- In ```/static/map.js``` uncomment ```DEVELOPMENT = true;```
+	- Centers map on Union Square farmer's market
+	- Useful when developing in remote location, say Cambridge MA
 
 
 data
@@ -51,13 +79,9 @@ TODO
 	- center map to where you are location
 	- zoom out to show both destination and current location
 
-
 - do better job sanitizing hours data
-
 - on creation of market, give open boolean
-
 - limit API use to just my IPs
-
 - /admin page for creating new competitions
 
 
@@ -65,7 +89,6 @@ DESIGN TODO
 ---
 
 - Nicer loading screen
-
 - design for directions
 
 

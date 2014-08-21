@@ -36,7 +36,7 @@
     <div id="map-canvas"></div>
 
 
-  <div id='market-info-outter-container'>
+  <div class='hidden' id='market-info-outter-container'>
     <span onclick="marketInfoController.hide()" class='close-btn btn'>X</span>
     
     <div id='market-info-container'>
@@ -85,8 +85,21 @@
       <p id='operation-hours'>operation-hours if bad-hours-data</p>
       <p id='operation-months'>operation-months</p>
 
-      <!-- hidden if market does not have EBT -->
-      <h2 id='market-EBT'>EBT</h2> 
+
+      <!-- hidden if market does not have this payment option -->
+      <h2 class='market-payment-option' id='market-EBT'>EBT</h2>
+      <h2 class='market-payment-option' id='market-FMNP'>FMNP</h2>
+      <h2 class='market-payment-option' id='market-WIC'>WIC</h2>
+
+
+      <!-- disclaimer on hours data w/ link to market website (if in data) - requested by growNYC -->
+      <p id='market-hours-disclaimer'>NOTE: Hours &amp; location are subject to change.</p>
+      <!-- hidden if market does not have link in data -->
+      <p id='market-link'>
+        For updated hours &amp; location, visit this market's website 
+        <a target="_blank" id='market-link-tag' href=""></a>
+      </p>
+
 
     </div>
   </div>
