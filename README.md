@@ -10,14 +10,10 @@ Functionality
 ---
 
 - Every farmers' market in New York State is on this map
-
 - As the key indicates, from a quick glance users can see which markets accept EBT and which don't
-
 - Markets that are open today are opaque and highlighted, vs markets that are closed today are less opaque
 	- So the markets that are open today are easy to see!
-
 - On click of a market you can view its hours and more info
-
 - You can get directions (walking/biking/transit/car) from your current location to a market
 
 
@@ -60,7 +56,26 @@ $ source venv/bin/activate
 
 data
 ---
-state-farmers-markets.csv from https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+
+- state-farmers-markets.csv 
+	- from https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+- farmers-markets-2014.csv
+	- from eat healthy NYC
+
+Data built from csv files and stored in Mongo DB database
+
+**Data Commands**
+
+Interface in ```/data/__init__.py```
+
+- ```build_data()```
+	- builds market data object from csv files
+	- does not interact with database
+- ```get_markets()```
+	- RESTful GET - pulls all markets from database
+- ```clear_markets(environment=None)```
+	- clears all markets from database in environment
+	- environment defaults to ```DEVELOPMENT```
 
 
 TODO
@@ -70,8 +85,7 @@ TODO
 	- check for open-date/close-date
 	- better date parsing
 	- Market.prototype.setOpenClosedStatus
-		- uncomment and use <h2 id='open-closed-title'>OPEN | CLOSED</h2>
-
+		- uncomment and use h2 id='open-closed-title' OPEN | CLOSED /h2
 
 - refactor javascript
 

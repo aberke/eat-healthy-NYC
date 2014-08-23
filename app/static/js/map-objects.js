@@ -54,8 +54,6 @@ var Market = function(map, data) {
 	this.map = map;
 	this.data = data;
 	this.setOpenClosedStatus();
-	console.log('market data', data)
-
 	this.marker = this.buildMarker(data);
 }
 Market.prototype.setOpenClosedStatus = function() {

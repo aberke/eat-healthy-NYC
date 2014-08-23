@@ -88,9 +88,9 @@ def normalize_datetime(datum):
 			operation-hours: 	Operation Hours | (Day(s) + Hours of operation)
 			operation-months: 	Operation Season
 		Code Readable:
-			days: {				// sparse dictionary: {day [int]: time-open [string]} <- Sunday=0, Monday=1,..
-				0: 11am-6pm,
-				i: str, for each i where market is open 
+			days: {				// sparse dictionary: {day str([int]): time-open [string]} <- Sunday=0, Monday=1,..
+				'0': 11am-6pm,
+				'i': str, for each i where market is open 
 			}
 			bad-days-data: boolean, // if couldn't extract hours - use operation-hours instead
 			open-date: { // : null if YR==True
@@ -214,7 +214,7 @@ def add_days(datum):
 	for i in range(len(DAYS_LIST)):
 		day = DAYS_LIST[i]
 		if day in days_string:
-			datum["days"][i] = hours_string
+			datum["days"][str(i)] = hours_string
 
 	return datum
 

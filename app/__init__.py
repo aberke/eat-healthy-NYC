@@ -12,9 +12,9 @@
 
 
 
-from flask import Flask, send_file, jsonify
+from flask import Flask, send_file
 from flask.ext.compress import Compress
-
+from util import dumpJSON
 
 
 # Configuration ----------------------------------------------
@@ -23,8 +23,8 @@ app = Flask('app')
 app.config.from_object('config')
 Compress(app)
 
-from app.data import get_data
-data = get_data()
+from app.data import get_markets
+mkt_data = get_markets()
 
 #---------------------------------------------- Configuration #
 
@@ -36,7 +36,7 @@ def base():
 
 @app.route('/data')
 def GETdata():
-	return jsonify({'data': data})
+	return dumpJSON({'data': mkt_data})
 
 
 
