@@ -39,8 +39,8 @@ mongo_config['STAGING']['MONGO_HOST'] 		= "TODO"
 mongo_config['STAGING']['MONGO_DB'] 		= "TODO"
 
 # PRODUCTION configuration
-mongo_config['PRODUCTION']['MONGO_HOST'] 	= os.environ.get('PRODUCTION_MONGO_HOST', None)
-mongo_config['PRODUCTION']['MONGO_DB'] 		= os.environ.get('PRODUCTION_MONGO_DB', None)
+mongo_config['PRODUCTION']['MONGO_HOST'] 	= os.environ.get('MONGOHQ_URL', None)
+mongo_config['PRODUCTION']['MONGO_DB'] 		= "app27181822"
 
 # ---------------------------------- MONGO CONFIG-
 
