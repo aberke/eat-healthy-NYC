@@ -54,19 +54,87 @@ function buildMap(mapEltId) {
 	map.setOptions({styles: styles});
 	return map;
 }
+
+
+/*------------------------------------------------------------
+@param [float] Latitude
+@param [float] Longitude
+@param [funciton] Callback - callback to call with boolean parameter
+@doc
+Uses Google Geocoding API for reverse Geocoding
+Calls Callback with true if request successful & location is in NY State, 
+					false otherwise
+-------------------------------------------------------------*/
+function isPositionNY(Latitude, Longitude, Callback) {
+	// make request to Geocoding API
+	$.ajax({
+		dataType: "json",
+		url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + Latitude + "," + Longitude,
+		data: {},
+		success: function(ret) {
+			var result;
+			for (var i=0; i<ret.results.length; i++) {
+				result = ret.results[i];
+				for (var c in result.address_components) {
+					if (result.address_components[c].short_name == "NY") {
+						return Callback(true);
+					}
+				}
+			}
+			return Callback(false);
+          	
+		}, error: function(err) {
+			console.log("Error in getting data from Google Geocoding API: " + err);
+			Callback(false);
+		}
+	});
+
+}
+
+/*------------------------------------------------------------
+@return [googlemaps.LatLng] Default Geolocation
+@doc
+Used for when location services fails (maybe user denied it) 
+TODO: use if location found is outside of New York
+-------------------------------------------------------------*/
+function getDefaultGeoLocation() {
+	return new google.maps.LatLng("40.73712", "-73.99029");
+}
+/*------------------------------------------------------------
+@return [googlemaps.LatLng] Geolocation
+@doc
+Used to initialize user point on map
+Gets and returns (via callback) user's geolocation if user in NY and provides location
+Otherwise returns (via callback) default location
+-------------------------------------------------------------*/
 function getGeoLocation(callback) {
+
+	// set up default location for case of failure when getting geolocation
+	var defaultLocation = getDefaultGeoLocation();
+
+	// if in DEVELOPMENT mode, put position on Union Square farmers market
+	if (DEVELOPMENT) {
+		return callback(defaultLocation);
+	}
+
 	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			var position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		navigator.geolocation.getCurrentPosition(function(pos) {
 			
-			callback(position);
+			isPositionNY(pos.coords.latitude, pos.coords.longitude, function(bool) {
+				if (bool == true) { 
+					var location = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+					callback(location); 
+				} else {
+					callback(defaultLocation);
+				}
+			});
 		}, function() {
-			console.log('Error: The Geolocation service failed.');
-			callback(null);
+			console.log('Error: The Geolocation service failed.  Using default location.');
+			callback(defaultLocation);
 		});
 	} else {
-		console.log("Error: Browser doesn't support Geolocation.");
-		callback(null);
+		console.log("Error: Browser doesn't support Geolocation.  Using default location.");
+		callback(defaultLocation);
 	}
 }
 
@@ -92,10 +160,6 @@ function initialize() {
 	// initialize user marker and map center at user location
 	getGeoLocation(function(position) {
 
-		// if in DEVELOPMENT mode, put position on Union Square farmers market
-		if (DEVELOPMENT) {
-			position = new google.maps.LatLng("40.73712", "-73.99029");
-		}
 		clientLocation = position;
 		map.setCenter(clientLocation);
 
