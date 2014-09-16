@@ -105,16 +105,13 @@ function getDefaultGeoLocation() {
 @doc
 Used to initialize user point on map
 Gets and returns (via callback) user's geolocation if user in NY and provides location
-Otherwise returns (via callback) default location
+Otherwise returns (via callback) null
 -------------------------------------------------------------*/
 function getGeoLocation(callback) {
 
-	// set up default location for case of failure when getting geolocation
-	var defaultLocation = getDefaultGeoLocation();
-
 	// if in DEVELOPMENT mode, put position on Union Square farmers market
 	if (DEVELOPMENT) {
-		return callback(defaultLocation);
+		return callback(getDefaultGeoLocation());
 	}
 
 	if(navigator.geolocation) {
@@ -125,18 +122,37 @@ function getGeoLocation(callback) {
 					var location = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 					callback(location); 
 				} else {
-					callback(defaultLocation);
+					callback(null);
 				}
 			});
 		}, function() {
 			console.log('Error: The Geolocation service failed.  Using default location.');
-			callback(defaultLocation);
+			callback(null);
 		});
 	} else {
 		console.log("Error: Browser doesn't support Geolocation.  Using default location.");
-		callback(defaultLocation);
+		callback(null);
 	}
 }
+function setUserMarker(clientLocation) {
+
+	var icon = {
+		path: google.maps.SymbolPath.CIRCLE,
+		strokeWeight: 6,
+		fillColor: "red",
+		strokeColor: "#ef7625",
+		fillOpacity: 1,
+		scale: 8
+	};
+
+	var marker = new google.maps.Marker({
+		position: clientLocation,
+		map: map,
+		draggable:false,
+		icon: icon,
+		title: 'Your Location'
+	});
+};
 
 
 function initialize() {
@@ -160,30 +176,13 @@ function initialize() {
 	// initialize user marker and map center at user location
 	getGeoLocation(function(position) {
 
-		clientLocation = position;
-		map.setCenter(clientLocation);
-
-		var icon = {
-			path: google.maps.SymbolPath.CIRCLE,
-			strokeWeight: 6,
-			fillColor: "red",
-			strokeColor: "#ef7625",
-			fillOpacity: 1,
-			scale: 8
-		};
-		
-		var shape = {
-			coord: [1, 1, 1, 150, 180, 150, 180 , 1],
-			type: 'poly'
-		};
-	
-		var marker = new google.maps.Marker({
-			position: clientLocation,
-			map: map,
-			draggable:false,
-			icon: icon,
-			title: 'Your Location'
-		});
+		// if coudn't return position (error or denied by user) - just center map on default location
+		if (!position) {
+			map.setCenter(getDefaultGeoLocation());
+		} else {
+			map.setCenter(position);
+			setUserMarker(position);
+		}
 	});
 
 	setupDirections();
