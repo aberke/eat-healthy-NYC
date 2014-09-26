@@ -18,12 +18,22 @@
     <!-- google maps api asset with key -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
     </script>
-
   </head>
   <body>
 
     <div id='loading-map-container'>
-      <h1>Loading map...</h1>
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="320px" height="548px" viewBox="0 0 320 548" enable-background="new 0 0 320 548" xml:space="preserve">
+        <path  id="i0" fill="none" stroke="#ffffff" stroke-width="2" fill="#90CA35" d="M103.929,135.559l36.963,60.478L98.883,150.17l-7.223,6.858l48.51,46.683
+          c-1.854,0.628-3.876,1.244-6.134,1.859c-4.092,1.109-7.89,3.014-11.23,5.524c-0.006-0.002-0.01,0.007-0.017,0.015
+          c-8.084,5.755-15.723,15.611-13.108,30.228c0.797,6.974,3.829,14.292,9.769,21.354c22.688,26.961,74.298,8.127,76.467,39.949
+          c2.157,31.818,27.344,34.219,30.587,30.982c0,0-23.839-1.809-22.672-30.143c1.037-24.948-5.382-23.307,2.507-46.838h-0.001
+          c6.374-14.069,13.553-29.617,8.895-45.417c-2.607-8.858-7.041-15.419-12.414-19.936c-10.75-10.248-23.187-9.315-32.441-5.755
+          c-0.014,0-0.02,0.007-0.025,0.014c-3.931,1.393-7.619,3.516-10.801,6.308c-1.767,1.557-3.38,2.87-4.936,4.073l-12.155-66.192
+          l-9.71,2.242l15.071,60.333l-30.035-64.195l-6.926,3.717L103.929,135.559 M168.671,197.987c-0.86,2.185-1.907,4.167-3.095,5.945
+          c-8.684,12.965-25.093,15.495-32.425,12.709c-1.829-0.701-2.749-2.751-2.049-4.577c0.695-1.836,2.747-2.754,4.578-2.055
+          c4.185,1.592,20.605,0.157,26.388-14.606c0.717-1.833,2.769-2.727,4.593-2.011C168.482,194.101,169.383,196.164,168.671,197.987z"/>
+      </svg>
     </div>
 
     <div id="key">
@@ -32,7 +42,9 @@
       <img src="/static/icons/pin_ebt.png" class='key-icon'>
       <span class='key-title'>EBT</span>
     </div>
-
+      <div class="menu-icon">
+          <i></i>
+      </div>
     <div id="map-canvas"></div>
 
 
@@ -115,6 +127,7 @@
           initialize(); 
       });
     </script>
+    <script type="text/javascript" src="/static/js/animation.js"></script>
 
     <!-- add fastclick -->
     <script type="text/javascript" src="/static/js/vendor/fastclick.js"></script>

@@ -159,6 +159,12 @@ function initialize() {
 	map = buildMap("map-canvas");
 	marketController = new MarketController(map);
 
+	google.maps.event.addListener(map, 'tilesloaded', function() {
+	  // Visible tiles loaded!
+	  	var loadingContainer = document.getElementById('loading-map-container');
+	  	loadingContainer.style.display = "none";
+	});
+
 	// get data
 	$.ajax({
 		dataType: "json",
@@ -166,8 +172,6 @@ function initialize() {
 		data: {},
 		success: function(ret) {
 
-          	var loadingContainer = document.getElementById('loading-map-container');
-          	loadingContainer.style.display = "none";
 			
 			marketController.init(ret.data);
 		},
