@@ -10,7 +10,8 @@ var map;
 var marketController;
 var clientLocation;
 
-
+var mapLoaded = false;
+var dataLoaded = false;
 
 
 function buildMap(mapEltId) {
@@ -161,8 +162,11 @@ function initialize() {
 
 	google.maps.event.addListener(map, 'tilesloaded', function() {
 	  // Visible tiles loaded!
-	  	var loadingContainer = document.getElementById('loading-map-container');
-	  	loadingContainer.style.display = "none";
+	  	mapLoaded = true;
+	  	if(dataLoaded) {
+		  	var loadingContainer = document.getElementById('loading-map-container');
+		  	loadingContainer.style.display = "none";
+	  	}
 	});
 
 	// get data
@@ -171,8 +175,12 @@ function initialize() {
 		url: DATA_URL,
 		data: {},
 		success: function(ret) {
+			dataLoaded = true;
 
-			
+		  	if(mapLoaded) {
+			  	var loadingContainer = document.getElementById('loading-map-container');
+			  	loadingContainer.style.display = "none";
+		  	}
 			marketController.init(ret.data);
 		},
 	});
