@@ -38,6 +38,9 @@ $ source venv/bin/activate
 ```
 
 * Install dependencies: ```$ pip install -r requirements.txt```
+
+* Install mongo and run locally with ```$ mongod```
+
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
 
