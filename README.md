@@ -40,6 +40,12 @@ $ source venv/bin/activate
 * Install dependencies: ```$ pip install -r requirements.txt```
 
 * Install mongo and run locally with ```$ mongod```
+* Initialize database from the CSV files
+```
+$ python
+>>> from app.data import initialize_markets
+>>> initialize_markets()
+```
 
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
