@@ -86,7 +86,7 @@ body {
 	width: 100%;
 	color: #002c45;
 	z-index: 100;
-	background: url(icons/loading.gif) no-repeat center center #22b473;
+	background: url(icons/loading2.gif) no-repeat center center #22b473;
 }
 
 /*behind loading-map until google maps loads*/
