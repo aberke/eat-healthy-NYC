@@ -33,6 +33,10 @@ mkt_data = get_markets()
 def base():
 	return send_file('static/map.html')
 
+@app.route('/admin')
+def admin():
+	return send_file('static/admin.html')
+
 
 @app.route('/data')
 def GETdata():

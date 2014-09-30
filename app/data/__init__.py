@@ -9,9 +9,9 @@
 #
 # End up returning list of dictionaries of form:
 # ----------------------------------------------
-# "CSWCKs": false,
 # "City": "New York",
 # "Contact": "Chelsea Whittaker",
+# "CSWCKs": false,
 # "EBT": true,
 # "FMNP": true,
 # "Latitude": "40.73712",

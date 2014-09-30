@@ -48,7 +48,10 @@ mongo_config['PRODUCTION']['MONGO_DB'] 		= "app27181822"
 
 # -----------------------------------------------------
 
-def connect(environment=ENVIRONMENT):
+def connect(environment=None):
+
+	environment = environment if environment else ENVIRONMENT
+
 	HOST = mongo_config[environment]['MONGO_HOST']
 	DB 	 = mongo_config[environment]['MONGO_DB']
 	

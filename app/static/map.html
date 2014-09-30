@@ -37,6 +37,29 @@
 
     </div>
 
+    <div id='menu-container'>
+
+      <h1>MENU</h1>
+
+      <a class='menu-item' target='_blank' href='https://github.com/aberke/eat-healthy-NYC' id='contribute'>
+        <img src='/static/icons/github-icon-black-32px.png'>
+        <h4 class='menu-item-name'>CONTRIBUTE</h4>
+      </a>
+      <a class='menu-item' target='_blank' href='/admin' id='contribute'>
+        <img src='/static/icons/edit-icon.png'>
+        <h4 class='menu-item-name'>ADMIN</h4>
+      </a>
+
+    </div>
+
+    <div id='main-view-container'>
+
+    <div id='menu-button' onclick='toggleMenu();'>
+      <div class='menu-button-line'></div>
+      <div class='menu-button-line'></div>
+      <div class='menu-button-line'></div>
+    </div>
+
     <div id="key">
       <img src="/static/icons/pin_mkt.png" class='key-icon'>
       <span class='key-title'>Market</span>
@@ -116,6 +139,7 @@
 
     </div>
   </div>
+  </div> <!-- main-view-container -->
 
 
     <!-- my javascript -->
@@ -128,7 +152,8 @@
           initialize(); 
       });
     </script>
-    <!--script type="text/javascript" src="/static/js/animation.js"></script-->
+    <!-- show/hide menu -->
+    <script type="text/javascript" src="/static/js/menu-controller.js"></script>
 
     <!-- add fastclick -->
     <script type="text/javascript" src="/static/js/vendor/fastclick.js"></script>
