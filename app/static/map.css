@@ -30,18 +30,63 @@ body {
 .btn {
 	cursor: pointer;
 }
-
+.menu-icon {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.menu-icon i{
+	width: 16px;
+	height: 3px;
+	background-color: white;
+	position: absolute;
+	top: 10px;
+	z-index: 999999;
+	transition: all .25s ease;
+}
+.menu-icon i:before {
+	content: '';
+	position: absolute;
+	width: 16px;
+	height: 3px;
+	background-color: white;
+	top: -6px;
+}
+.menu-icon i:after {
+	content: '';
+	position: absolute;
+	width: 16px;
+	height: 3px;
+	background-color: white;
+	top: 6px;
+}
+.menu-icon:hover i{
+	background-color: transparent;
+}
+.menu-icon:hover i:before {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	top: 0px;
+}
+.menu-icon:hover i:after {
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: 0px;
+}
 
 /*shown until google maps loads*/
 #loading-map-container {
 	text-align: center;
-	padding: 100px 0;
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: #f9f4e5;
 	color: #002c45;
 	z-index: 100;
+	background: url(icons/loading2.gif) no-repeat center center #22b473;
 }
 
 /*behind loading-map until google maps loads*/
