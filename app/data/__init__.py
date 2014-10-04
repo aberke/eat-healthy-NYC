@@ -3,7 +3,7 @@
 #
 #
 # 	Author: Alexandra Berke (aberke)
-# 	Written: Summer 2014
+# 	Written: 2014
 #
 #
 #
@@ -107,15 +107,6 @@ def build_data():
 
 
 
-#- RESTful Interface ---------------------------------------------------------
-
-def get_markets():
-	db = database.get_db()
-	markets = db.markets.find()
-	return [m for m in markets]
-
-#--------------------------------------------------------- RESTful Interface -
-
 
 #- Command Line Interface ----------------------------------------------------
 
@@ -147,14 +138,13 @@ def initialize_markets(environment=None):
 	(2). Build data
 	(3). Insert data into markets collection
 	"""
+	db = database.connect(environment=environment)
 	# (1)
-	clear_markets(environment=environment)
+	database.drop_markets(database=db)
 	# (2)
 	data = build_data()
 	# (3)
-	(client, db) = database.connect(environment=environment)
-	ret = db.markets.insert(data)
-	client.disconnect()
+	db.markets.insert(data)
 
 #---------------------------------------------------- Command Line Interface -
 
