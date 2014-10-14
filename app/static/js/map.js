@@ -10,7 +10,8 @@ var map;
 var marketController;
 var clientLocation;
 
-
+var mapLoaded = false;
+var dataLoaded = false;
 
 
 function buildMap(mapEltId) {
@@ -159,16 +160,27 @@ function initialize() {
 	map = buildMap("map-canvas");
 	marketController = new MarketController(map);
 
+	google.maps.event.addListener(map, 'tilesloaded', function() {
+	  // Visible tiles loaded!
+	  	mapLoaded = true;
+	  	if(dataLoaded) {
+		  	var loadingContainer = document.getElementById('loading-map-container');
+		  	loadingContainer.style.display = "none";
+	  	}
+	});
+
 	// get data
 	$.ajax({
 		dataType: "json",
 		url: DATA_URL,
 		data: {},
 		success: function(ret) {
+			dataLoaded = true;
 
-          	var loadingContainer = document.getElementById('loading-map-container');
-          	loadingContainer.style.display = "none";
-			
+		  	if(mapLoaded) {
+			  	var loadingContainer = document.getElementById('loading-map-container');
+			  	loadingContainer.style.display = "none";
+		  	}
 			marketController.init(ret.data);
 		},
 	});
