@@ -1,3 +1,14 @@
-admin to do
-
-<div class="menu"><i></i></div>
+<div class="view-wrapper" ng-class="{'menu-active': view.menuActive}">
+	<header>
+		<div class="toolBar">
+			<div class="menu" 
+				ng-class="{'menu-active': view.menuActive}" 
+				ng-click="view.menuActive = !view.menuActive"><i></i></div>
+			<div class="searchBtn"></div>
+		</div>
+		<h1 ng-click="setPage('main')">Dashboard	</h1>
+	</header>
+	<div class="main">
+			
+	</div>
+</div>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /********************************************************************************
 #--------------------------------------------------------------------------------
 #
@@ -10,28 +11,163 @@
 		green: #22b473;
 #--------------------------------------------------------------------------------
 #********************************************************************************/
-
-
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?l5ockb");
+  src: url("../fonts/icomoon.eot?#iefixl5ockb") format("embedded-opentype"), url("../fonts/icomoon.woff?l5ockb") format("woff"), url("../fonts/icomoon.ttf?l5ockb") format("truetype"), url("../fonts/icomoon.svg?l5ockb#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 * {
-	margin: 0;
-	padding: 0;
-	border: none;
-	/*defined font in stylesheet loaded from google*/
-	font-family: 'Cabin Condensed', sans-serif;
-}
+  margin: 0;
+  padding: 0;
+  border: none;
+  /*defined font in stylesheet loaded from google*/
+  /*font-family: 'Cabin Condensed', sans-serif;*/ }
+
 html, body {
-	height: 100%;
-	width: 100%;
-}
+  height: 100%;
+  width: 100%; }
+
 body {
-	position: absolute; /*to avoid gaps between map canvas and body*/
-	overflow: hidden;
-	background-color: #22b473;
-}
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: "Roboto", sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  margin: 0;
+  padding: 0; }
 
 h1 {
-	color: white;
-	text-align: center;
-	margin: 50px auto;
-}
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 42px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.85); }
 
+h4 {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: 0.05em; }
+
+/********************view ****************/
+.view {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: absolute;
+  border: solid 2px black; }
+  .view .view-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+    .view .view-wrapper.menu-active {
+      -webkit-transform: translateX(75%);
+      -ms-transform: translateX(75%);
+      -o-transform: translateX(75%);
+      transform: translateX(75%); }
+  .view header {
+    height: 156px;
+    background-color: #EF8D87;
+    color: #ffffff; }
+    .view header .toolBar {
+      height: 72px;
+      width: 100%; }
+      .view header .toolBar .searchBtn {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 40px; }
+      .view header .toolBar .searchBtn::before {
+        content: "";
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 72px;
+        font-size: 18px;
+        display: block; }
+      .view header .toolBar .menu {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        cursor: pointer; }
+        .view header .toolBar .menu i {
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          top: 19px;
+          right: 11px;
+          background-color: #ffffff;
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+        .view header .toolBar .menu i::before {
+          content: '';
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          top: -5px;
+          background-color: #ffffff;
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+        .view header .toolBar .menu i::after {
+          content: '';
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          top: 5px;
+          background-color: #ffffff;
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+      .view header .toolBar .menu.menu-active i {
+        background-color: rgba(255, 255, 255, 0); }
+      .view header .toolBar .menu.menu-active i::before {
+        top: 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg); }
+      .view header .toolBar .menu.menu-active i::after {
+        top: 0;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg); }
+    .view header h1 {
+      padding-left: 72px; }
+
+/********************view.menu ****************/
+.menu-wrapper {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  left: -75%;
+  background-color: #333333;
+  padding: 0 20px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in; }
+  .menu-wrapper.menu-active {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%); }
+
+/*# sourceMappingURL=admin.css.map */
