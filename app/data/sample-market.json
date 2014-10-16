@@ -1,0 +1,37 @@
+{
+	"name": "Union Square Greenmarket",
+
+	"Latitude": "40.73712",
+	"Longitude": "-73.99029",
+	"location": "Broadway & E 17th St",
+	"City": "New York",
+	"zipcode": "10003",
+	"county": "Manhattan",
+	"State": "NY",
+
+	"YR": true,
+	"days": {
+		"1": {
+			"start": "UTC-date",
+			"end": "UTC-date"
+		},
+	 	"3": {
+			"start": "UTC-date",
+			"end": "UTC-date"
+		},
+		"5": {
+			"start": "UTC-date",
+			"end": "UTC-date"
+		}
+	},
+	"operation-hours": "M/W/F/Sat  8am-6pm",
+	"operation-months": "Year-round"
+
+	"Contact": "Chelsea Whittaker",
+	"Market Link": "http://www.grownyc.org",
+	"Phone": "2127887476",
+	"CSWCKs": false,
+	"EBT": true,
+	"FMNP": true,
+	"Stellar": false
+}

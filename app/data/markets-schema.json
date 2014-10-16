@@ -1,0 +1,178 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Market document",
+    "type": "object",
+    "properties": {
+        "_id": {
+            "description": "Mongo generated ObjectId",
+            "type": "ObjectId"
+        },
+        "name": {
+            "type": "string"
+        },
+        "latitude": {
+            "type": "string"
+        },
+        "longitude": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "description": "Human readable street address of farmer's market"
+        },
+        "city": {
+            "type": "string"
+        },
+        "zipcode": {
+            "type": "string"
+        },
+        "county": {
+            "type": "string"
+        },
+        "state": {
+            "type": "string",
+            "description": "NY",
+            "default": "NY"
+        },
+
+        "YR": {
+            "type": "boolean",
+            "default": "false"
+        },
+        "season": {
+            "type": "object",
+            "properties": {
+                "start": {
+                    "type": "string",
+                    "description": "UTC datetime"
+                },
+                "end": {
+                    "type": "string",
+                    "description": "UTC datetime"
+                }
+            },
+            "required": ["start", "end"]
+        },
+        "days": {
+            "type": "object",
+            "properties": {
+                "1": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "2": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "3": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "4": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "5": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "6": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                },
+                "7": {
+                    "type": "object",
+                    "default": null,
+                    "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
+                    "start": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "UTC datetime"
+                    }
+                }
+            }
+        },
+        "contact": {
+            "type": "string",
+            "description": "Name of contact for this market"
+        },
+        "website": {
+            "type": "string",
+            "description": "Link to website for this market."
+        },
+        "phone": {
+            "type": "string",
+            "description": "Phonenumber to reach this market."
+        },
+
+        "Stellar": {
+            "type": "boolean"
+        },
+        "EBT": {
+            "type": "boolean"
+        },
+        "FMNP": {
+            "type": "boolean"
+        },
+        "CSWCKs": {
+            "type": "boolean"
+        }
+    }
+}
