@@ -115,6 +115,9 @@ h4 {
 	color: #999999;
 	line-height: 20px;
 }
+a {
+	text-decoration: none;
+}
 input {
 	font-family: $font;
 	color: #ffffff;
@@ -362,8 +365,11 @@ input {
 			display: block;
 			border-bottom: solid 1px $gradientColor2;
 		}
-		li {
+		> li,
+		> a {
 			cursor: pointer;
+			color: #ffffff;
+			display: block;
 			line-height: 50px;
 			border-bottom: solid 1px $gradientColor2;
 			padding-left: 20px;

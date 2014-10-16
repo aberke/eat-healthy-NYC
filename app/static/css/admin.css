@@ -64,6 +64,9 @@ h4 {
   color: #999999;
   line-height: 20px; }
 
+a {
+  text-decoration: none; }
+
 input {
   font-family: "Roboto", sans-serif;
   color: #ffffff;
@@ -307,8 +310,11 @@ input {
       font-weight: 300;
       display: block;
       border-bottom: solid 1px #47a9ad; }
-    .menu-wrapper ul li {
+    .menu-wrapper ul > li,
+    .menu-wrapper ul > a {
       cursor: pointer;
+      color: #ffffff;
+      display: block;
       line-height: 50px;
       border-bottom: solid 1px #47a9ad;
       padding-left: 20px;
@@ -317,7 +323,8 @@ input {
       letter-spacing: 0.03em;
       text-transform: uppercase;
       font-weight: 700; }
-      .menu-wrapper ul li::after {
+      .menu-wrapper ul > li::after,
+      .menu-wrapper ul > a::after {
         content: "";
         font-family: 'icomoon-material-icons';
         speak: none;
@@ -334,7 +341,8 @@ input {
         width: 50px;
         text-align: center;
         font-size: 28px; }
-      .menu-wrapper ul li.github.link::after {
+      .menu-wrapper ul > li.github.link::after,
+      .menu-wrapper ul > a.github.link::after {
         content: "";
         font-family: 'icomoon';
         speak: none;
