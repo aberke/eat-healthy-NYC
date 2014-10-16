@@ -1,14 +1,16 @@
-<div class="view-wrapper" ng-class="{'menu-active': view.menuActive}">
+<div class="view-wrapper admin-view" ng-class="{'menu-active': view.menuActive, 'search-active': view.searchActive, }">
 	<header>
 		<div class="toolBar">
 			<div class="menu" 
 				ng-class="{'menu-active': view.menuActive}" 
 				ng-click="view.menuActive = !view.menuActive"><i></i></div>
-			<div class="search btn"></div>
-			<!-- <div class="edit btn"></div> -->
+			<div class="search icon btn"
+				 ng-click="view.searchActive = !view.searchActive"></div>
+			<!-- <div class="edit icon btn"></div> -->
 		</div>
+		<input type="text" placeholder="Type here to search">
 		<h1>Dashboard</h1>
-		<div class="roundBtn plus"></div>
+		<div class="roundBtn plus icon"></div>
 	</header>
 	<main>
 		<ul class="markets">

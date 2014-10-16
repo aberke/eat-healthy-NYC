@@ -12,6 +12,7 @@
 
 	app.controller('ViewController', function($scope, $state){
 		this.menuActive = 0;
+		this.searchActive = 0;
 	});
 
 	app.controller('MapController', 
@@ -82,7 +83,7 @@
 				templateUrl: 'templates/admin.html',
 			});
 
-		$urlRouterProvider.otherwise('/view');
+		$urlRouterProvider.otherwise('/map');
 	})
 
 
