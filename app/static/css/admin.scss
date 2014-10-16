@@ -26,6 +26,26 @@ $animation: 0.3s;
 
 $menuHeight : 60px;
 
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?l5ockb');
+	src:url('../fonts/icomoon.eot?#iefixl5ockb') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?l5ockb') format('woff'),
+		url('../fonts/icomoon.ttf?l5ockb') format('truetype'),
+		url('../fonts/icomoon.svg?l5ockb#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'icomoon-material-icons';
+	src:url('../fonts/icomoon-material-icons.eot?fi04dl');
+	src:url('../fonts/icomoon-material-icons.eot?#iefixfi04dl') format('embedded-opentype'),
+		url('../fonts/icomoon-material-icons.woff?fi04dl') format('woff'),
+		url('../fonts/icomoon-material-icons.ttf?fi04dl') format('truetype'),
+		url('../fonts/icomoon-material-icons.svg?fi04dl#icomoon-material-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 @mixin icomoon($content) {
 	content: $content;
   	font-family: 'icomoon';
@@ -65,26 +85,6 @@ $menuHeight : 60px;
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-@font-face {
-	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?l5ockb');
-	src:url('../fonts/icomoon.eot?#iefixl5ockb') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?l5ockb') format('woff'),
-		url('../fonts/icomoon.ttf?l5ockb') format('truetype'),
-		url('../fonts/icomoon.svg?l5ockb#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'icomoon-material-icons';
-	src:url('fonts/icomoon-material-icons.eot?mqqesw');
-	src:url('fonts/icomoon-material-icons.eot?#iefixmqqesw') format('embedded-opentype'),
-		url('fonts/icomoon-material-icons.woff?mqqesw') format('woff'),
-		url('fonts/icomoon-material-icons.ttf?mqqesw') format('truetype'),
-		url('fonts/icomoon-material-icons.svg?mqqesw#icomoon-material-icons') format('svg');
-	font-weight: normal;
-	font-style: normal;
 }
 html, body {
 	height: 100%;
