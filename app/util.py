@@ -43,8 +43,20 @@ class JSONEncoder(json.JSONEncoder):
 JSONencoder = JSONEncoder()
 
 
-def dumpJSON(data):
+def dumpJSON(data=None):
+	response_data = {'data': data}
 	if not isinstance(data, str):
-		data = JSONencoder.encode(data)
+		response_data = JSONencoder.encode(response_data)
 	response_headers = {'Content-Type': 'application/json'}
-	return Response(data, 200, response_headers)
+	return Response(response_data, 200, response_headers)
+
+
+def respond500(exception):
+	yellERROR(exception.message)
+	response_data = json.dumps({'error': exception.message})
+	response_headers = {'Content-Type': 'application/json'}
+	return Response(response_data, 500, response_headers)
+
+
+def yellERROR(msg=None):
+	print("\n************ ERROR **************\n" + str(msg) + "\n************* ERROR *************\n")

@@ -47,6 +47,8 @@ $ python
 >>> initialize_markets()
 ```
 
+* Make sure all works by running the tests (see documentation below)
+
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
 
@@ -56,11 +58,20 @@ $ python
 * Run server ```python run.py``` and visit <http://127.0.0.1:5000>
 
 
+
 **Development Mode**
 
 - In ```/static/map.js``` uncomment ```DEVELOPMENT = true;```
 	- Centers map on Union Square farmer's market
 	- Useful when developing in remote location, say Cambridge MA
+
+
+Tests
+---
+
+- Tests located in test directory
+- Run all tests with ```$ python run_tests.py```
+- Run tests selectively by commenting/uncommenting items in testmodules list in ```run_tests.py```
 
 
 data
@@ -90,6 +101,10 @@ Interface in ```/data/__init__.py```
 TODO
 ---
 
+- BASIC-AUTH for admin page
+	- on page
+	- for api
+
 - do better with open/closed status
 	- check for open-date/close-date
 	- better date parsing
@@ -108,11 +123,6 @@ TODO
 - /admin page for creating new competitions
 
 
-DESIGN TODO
----
-
-- Nicer loading screen
-- design for directions
 
 
 
