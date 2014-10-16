@@ -12,6 +12,7 @@
 #********************************************************************************
 
 import json
+from base64 import b64encode # for basic auth
 
 from test_base import BaseTestCase
 
@@ -55,7 +56,7 @@ class APItestCase(BaseTestCase):
 
 	def POST_data(self, endpoint, data=None):
 		data = data if data else {}
-		rv = self.app.post(endpoint, data=json.dumps(data))
+		rv = self.app.post(endpoint, data=json.dumps(data), headers=self.basic_auth_headers())
 		self.assertEqual(rv.status_code, 200)
 		return self.response_data(rv)
 	
@@ -78,10 +79,23 @@ class PUTtestCase(APItestCase):
 
 class POSTtestCase(APItestCase):
 
+	def test_requires_auth(self):
+		# post good data with no auth headers and expect 401
+		rv = self.app.post('/api/markets', data=json.dumps(TEST_MARKET_DATA))
+		self.assertEqual(rv.status_code, 401)
+
+		# post good data with bad auth headers and expect 401
+		bad_auth_headers = {
+    		'Authorization': 'Basic ' + b64encode("{0}:{1}".format('im', 'bad'))
+		}
+		rv = self.app.post('/api/markets', data=json.dumps(TEST_MARKET_DATA), headers=bad_auth_headers)
+		self.assertEqual(rv.status_code, 401)
+
+
 	def test_post_bad_data(self):
 
 		# post with empty data should return error and not post
-		rv = self.app.post('/api/markets', data=json.dumps({}))
+		rv = self.app.post('/api/markets', data=json.dumps({}), headers=self.basic_auth_headers())
 		self.assertEqual(rv.status_code, 500)
 		get_all = self.GET_data('/api/markets')
 		self.assertEqual(0, len(get_all))
@@ -90,7 +104,7 @@ class POSTtestCase(APItestCase):
 		posted_id = self.POST_data('/api/markets', data=TEST_MARKET_DATA)['_id']
 		BAD_TEST_DATA = TEST_MARKET_DATA.copy()
 		BAD_TEST_DATA['_id'] = posted_id
-		rv = self.app.post('/api/markets', data=json.dumps(BAD_TEST_DATA))
+		rv = self.app.post('/api/markets', data=json.dumps(BAD_TEST_DATA), headers=self.basic_auth_headers())
 		self.assertEqual(rv.status_code, 500)
 
 

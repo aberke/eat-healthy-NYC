@@ -14,6 +14,7 @@ from flask import Flask, send_file, request
 from flask.ext.compress import Compress
 import json
 from util import dumpJSON, respond500
+from basic_auth import requires_auth
 
 
 #--------------------------------------------------------------
@@ -37,6 +38,7 @@ def base():
 	return send_file('static/map.html')
 
 @app.route('/admin')
+@requires_auth
 def admin():
 	return send_file('static/admin.html')
 
@@ -77,6 +79,7 @@ def PUT_market(id):
 
 # TODO - AUTHENTICATION
 @app.route('/api/markets', methods=['POST'])
+@requires_auth
 def POST_market():
 	try:
 		market_data = json.loads(request.data)
