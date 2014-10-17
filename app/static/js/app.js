@@ -1,14 +1,33 @@
 (function(){
 	var app = angular.module('farmer', ['ui.router']);
+	app.directive('ngFocus', function($timeout, $rootScope) {
+	    return {
+	        restrict: 'A',
+	        scope: {
+	            focusValue: "=ngFocus"
+	        },
+	        link: function($scope, $element, attrs) {
+	            $scope.$watch("focusValue", function(currentValue, previousValue) {
+	                if (currentValue === true && !previousValue) {
+	                    setTimeout(function(){
+	                    	$element[0].focus();
+	                    }, 20);
+	                } else if (currentValue === false && previousValue) {
+	                    $element[0].blur();
+	                }
+	            })
+	        }
+	    }
+	});
 	app.controller('AdminController', function($scope, $state, $stateParams, $http, $q){
 
 		$scope.data;
 		$http.get('/data').
-		  success(function(data, status, headers, config) {
-		    $scope.data = data.data;
-		    console.log(data.data);
+		  success(function(res, status, headers, config) {
+		    $scope.data = res.data;
+		    console.log(res.data);
 		  }).
-		  error(function(data, status, headers, config) {
+		  error(function(res, status, headers, config) {
 		  	console.log(status);
 		  });
 
