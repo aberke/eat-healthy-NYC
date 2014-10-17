@@ -35,12 +35,12 @@ from app.data import api
 
 @app.route('/')
 def base():
-	return send_file('static/map.html')
+	return send_file('static/index.html')
 
-@app.route('/admin')
-@requires_auth
-def admin():
-	return send_file('static/admin.html')
+# @app.route('/admin')
+# @requires_auth
+# def admin():
+# 	return send_file('static/admin.html')
 
 @app.route('/data')
 def GET_data():

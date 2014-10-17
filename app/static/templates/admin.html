@@ -8,17 +8,17 @@
 				 ng-click="view.searchActive = !view.searchActive"></div>
 			<!-- <div class="edit icon btn"></div> -->
 		</div>
-		<input type="text" placeholder="Type here to search">
+		<input type="text" placeholder="Search by">
 		<h1>Dashboard</h1>
 		<div class="roundBtn plus icon"></div>
 	</header>
 	<main>
 		<ul class="markets">
-			<li>
-				<h3>Tompkins Square Greenmarket</h3>
+			<li ng-repeat="entry in data">
+				<h3>{{entry.name}}</h3>
 				<h4>
-					E 7th St & Ave A<br/>
-					Manhattan 10009
+					{{entry.location}}<br/>
+					{{ entry.City + ' '+entry.State + ' ' + entry.zipcode }}
 				</h4>
 			</li>
 			<li>
