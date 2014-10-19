@@ -101,9 +101,8 @@ Interface in ```/data/__init__.py```
 TODO
 ---
 
-- BASIC-AUTH for admin page
-	- on page
-	- for api
+- finish /admin page for creating new competitions
+- better menu button
 
 - do better with open/closed status
 	- check for open-date/close-date
@@ -120,7 +119,6 @@ TODO
 - do better job sanitizing hours data
 - on creation of market, give open boolean
 - limit API use to just my IPs
-- /admin page for creating new competitions
 
 
 

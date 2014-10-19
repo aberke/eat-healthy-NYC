@@ -205,6 +205,33 @@ class PUTtestCase(APItestCase):
 
 	def test_good_put(self):
 		print 'TODO'
+		"""
+		0. 
+		PUT_TEST_MARKET_DATA = TEST_MARKET_DATA.copy()
+		POST TEST_MARKET_DATA
+		1.
+		PUT {'name': 'new-name-1'}
+		PUT_TEST_MARKET_DATA['name'] = 'new-name-1'
+		GET and verify response matches PUT_TEST_MARKET_DATA
+		2.
+		PUT {'name': 'new-name-2', 'contact': 'new-contact-2'}
+		PUT_TEST_MARKET_DATA['name'] = 'new-name-2'
+		PUT_TEST_MARKET_DATA['contact'] = 'new-contact-2'
+		GET and verify response matches PUT_TEST_MARKET_DATA
+		"""
+		PUT_TEST_MARKET_DATA = TEST_MARKET_DATA.copy()
+		id = self.POST_data('/api/markets', data=PUT_TEST_MARKET_DATA)['_id']
+		
+		self.PUT_data('/api/markets/' + id, data={'name': 'new-name-1'})
+		PUT_TEST_MARKET_DATA['name'] = 'new-name-1'
+		get_data = self.GET_data('/api/markets/' + id)
+		self.assertDataMatch(PUT_TEST_MARKET_DATA, get_data)
+
+		self.PUT_data('/api/markets/' + id, data={'name': 'new-name-2', 'contact': 'new-contact-2'})
+		PUT_TEST_MARKET_DATA['name'] = 'new-name-2'
+		PUT_TEST_MARKET_DATA['contact'] = 'new-contact-2'
+		get_data = self.GET_data('/api/markets/' + id)
+		self.assertDataMatch(PUT_TEST_MARKET_DATA, get_data)
 
 
 	def test_trivial_put(self):

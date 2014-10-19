@@ -5,7 +5,7 @@ var DEVELOPMENT = false;
 // DEVELOPMENT = true;
 
 
-var DATA_URL = '/data';
+var DATA_URL = '/api/markets';
 var map;
 var marketController;
 var clientLocation;

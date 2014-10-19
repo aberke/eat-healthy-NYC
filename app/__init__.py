@@ -42,10 +42,6 @@ def base():
 def admin():
 	return send_file('static/admin.html')
 
-@app.route('/data')
-def GET_data():
-	return GET_markets_all()
-
 #--------------------------------------------- User Interface -
 #--------------------------------------------------------------
 
@@ -77,7 +73,7 @@ def DELETE_market(id):
 	except Exception as e:
 		return respond500(e)
 
-# TODO tests
+
 @app.route('/api/markets/<id>', methods=['PUT'])
 @requires_auth
 def PUT_market(id):
@@ -97,10 +93,6 @@ def POST_market():
 		return respond200(data={'_id': market_id})
 	except Exception as e:
 		return respond500(e)
-
-
-
-
 
 
 #- Admin API --------------------------------------------------

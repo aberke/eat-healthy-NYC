@@ -64,7 +64,9 @@ def update_market(id, data):
 	"""
 	data = sanitize_market_data(data)
 	data = stamp_last_modified(data)
+
 	ret = db.markets.update({ "_id": sanitize_id(id) }, { "$set": data})
+	
 	if not ret['updatedExisting']:
 		raise Exception("update_market failed to update an existing market")
 	return ret
