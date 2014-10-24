@@ -60,7 +60,7 @@ MarketInfoController.prototype.showDirections = function() {
 	this.directionsContainer.style.display = "block";
 }
 MarketInfoController.prototype.hideDirections = function() {
-	directionsRenderer.set('directions', null);
+	DirectionsRendererFactory.setDirections(null);
 	this.directionsContainer.style.display = "none";
 }
 var TRAVELMODES = {
@@ -69,20 +69,19 @@ var TRAVELMODES = {
 	"BICYCLING": google.maps.TravelMode.BICYCLING,
 	"TRANSIT": google.maps.TravelMode.TRANSIT,
 }
-MarketInfoController.prototype.getDirections = function(travelMode) {
-	console.log('getDirections', travelMode, marketController.selectedMarket);
+MarketInfoController.prototype.getDirections = function(travelMode, selectedMarket) {
+	console.log('getDirections', travelMode, selectedMarket);
 
-	var start = clientLocation;
-	var end = marketController.selectedMarket.marker.position;
+	var start = InfoService.getClientLocation();
+	var end = selectedMarket.marker.position;
 	var request = {
 		origin: start,
 		destination: end,
 		travelMode: (TRAVELMODES[travelMode] || google.maps.TravelMode.WALKING),
 	};
-	directionsService.route(request, function(response, status) {
+	DirectionsService.route(request, function(response, status) {
 		if (status == google.maps.DirectionsStatus.OK) {
-		  	directionsRenderer.setDirections(response);
-			map.setCenter(clientLocation);
+		  	DirectionsRendererFactory.setDirections(response);
 		}
 	});
 	this.showDirections();
@@ -145,8 +144,6 @@ MarketInfoController.prototype.showMarketContent = function(data, contentString)
 	this.show();
 }
 
-
-
 function cleanString(string) {
 	/* When do things like element.innerHTML = variable,
 		want to avoid case where variable is undefined.
@@ -155,14 +152,6 @@ function cleanString(string) {
 }
 
 
-
-
-
-
-
-
-// attach to window?
-var marketInfoController = new MarketInfoController();
 
 
 

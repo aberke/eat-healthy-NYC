@@ -101,9 +101,28 @@ Interface in ```/data/__init__.py```
 TODO
 ---
 
-- BASIC-AUTH for admin page
-	- on page
-	- for api
+# DEVELOPMENT
+
+- put geolocation stuff in services
+
+- hide/show loading screen
+	- with resolve function in routes?
+	- see marked with TODO - SEE README ITEM in controllers.js
+
+- finish reorganizing /static to make app angularized (old stuff in /static-1)
+
+- menu
+	- make menu a directive
+	- fix menu button
+
+
+
+
+
+
+
+
+- buy domain name
 
 - do better with open/closed status
 	- check for open-date/close-date
@@ -120,7 +139,6 @@ TODO
 - do better job sanitizing hours data
 - on creation of market, give open boolean
 - limit API use to just my IPs
-- /admin page for creating new competitions
 
 
 

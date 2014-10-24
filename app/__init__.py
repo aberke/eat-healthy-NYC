@@ -35,7 +35,7 @@ from app.data import api
 
 @app.route('/')
 def base():
-	return send_file('static/index.html')
+	return send_file('static/html/base.html')
 
 # @app.route('/admin')
 # @requires_auth

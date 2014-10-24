@@ -1,17 +1,51 @@
-console.log('map.js')
+/*********************************************************************
+----------------------------------------------------------------------
+
+ 	Authors: 
+ 		Alexandra Berke (aberke)
+ 		Wenting 
+ 	2014
+	NYC
+
+
+----------------------------------------------------------------------
+*********************************************************************/
+
+
+
+
+
+
+function MapController($scope, $http, APIservice) {
+
 
 /* When developing, uncomment DEVELOPMENT = true to center map's location on Union Square, etc */
 var DEVELOPMENT = false;
 // DEVELOPMENT = true;
 
 
-var DATA_URL = '/data';
 var map;
 var marketController;
 var clientLocation;
 
 var mapLoaded = false;
 var dataLoaded = false;
+
+
+	/*-- I'm an AngularJS controller stuff ---------------------- */
+
+	$scope.getDirections = function(type) {
+		marketController.getDirections(type);
+		map.setCenter(InfoService.getClientLocation());
+	}
+	$scope.hideDirections = function() {
+		marketController.hideDirections();
+	}
+	$scope.hideMarketInfo = function() {
+		marketController.hideMarketInfo();
+	}
+
+	/*---------------------- I'm an AngularJS controller stuff -- */
 
 
 function buildMap(mapEltId) {
@@ -32,7 +66,6 @@ function buildMap(mapEltId) {
 	var styles = [
 	  {
 		stylers: [
-		  // { hue: "#586065" },
 		  { hue: "red" },
 		  { saturation: -100 }
 		]
@@ -68,27 +101,26 @@ Calls Callback with true if request successful & location is in NY State,
 -------------------------------------------------------------*/
 function isPositionNY(Latitude, Longitude, Callback) {
 	// make request to Geocoding API
-	$.ajax({
-		dataType: "json",
-		url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + Latitude + "," + Longitude,
-		data: {},
-		success: function(ret) {
-			var result;
-			for (var i=0; i<ret.results.length; i++) {
-				result = ret.results[i];
-				for (var c in result.address_components) {
-					if (result.address_components[c].short_name == "NY") {
-						return Callback(true);
-					}
+	var onError = function(err) {
+		console.log("Error in getting data from Google Geocoding API: " + err);
+		Callback(false);
+	}
+	var onSuccess = function(ret) {
+		var result;
+		for (var i=0; i<ret.results.length; i++) {
+			result = ret.results[i];
+			for (var c in result.address_components) {
+				if (result.address_components[c].short_name == "NY") {
+					console.log("User is in NYC");
+					return Callback(true);
 				}
 			}
-			return Callback(false);
-          	
-		}, error: function(err) {
-			console.log("Error in getting data from Google Geocoding API: " + err);
-			Callback(false);
 		}
-	});
+		return Callback(false); 	
+	}
+    $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + Latitude + "," + Longitude)
+        .success(onSuccess)
+        .error(onError);
 
 }
 
@@ -156,59 +188,48 @@ function setUserMarker(clientLocation) {
 };
 
 
-function initialize() {
-	map = buildMap("map-canvas");
-	marketController = new MarketController(map);
+	function initialize() {
+		map = buildMap("map-canvas");
+		marketController = new MarketController(map);
 
-	google.maps.event.addListener(map, 'tilesloaded', function() {
-	  // Visible tiles loaded!
-	  	mapLoaded = true;
-	  	if(dataLoaded) {
-		  	var loadingContainer = document.getElementById('loading-map-container');
-		  	loadingContainer.style.display = "none";
-	  	}
-	});
-
-	// get data
-	$.ajax({
-		dataType: "json",
-		url: DATA_URL,
-		data: {},
-		success: function(ret) {
-			dataLoaded = true;
-
-		  	if(mapLoaded) {
+		google.maps.event.addListener(map, 'tilesloaded', function() {
+		  // Visible tiles loaded!
+		  	mapLoaded = true;
+		  	if(dataLoaded) {
 			  	var loadingContainer = document.getElementById('loading-map-container');
-			  	loadingContainer.style.display = "none";
+			  	// loadingContainer.style.display = "none"; TODO -- SEE README ITEM
 		  	}
-			marketController.init(ret.data);
-		},
-	});
+		});
 
-	// initialize user marker and map center at user location
-	getGeoLocation(function(position) {
+		APIservice.GET('/markets').then(function(ret) {
+				dataLoaded = true;
 
-		// if coudn't return position (error or denied by user) - just center map on default location
-		if (!position) {
-			map.setCenter(getDefaultGeoLocation());
-		} else {
-			map.setCenter(position);
-			setUserMarker(position);
-		}
-	});
+			  	if(mapLoaded) {
+				  	var loadingContainer = document.getElementById('loading-map-container');
+				  	// loadingContainer.style.display = "none"; TODO - SEE README ITEM
+			  	}
+			  	console.log('get /markets: ', ret);
+				marketController.init(ret.data);
+			});
 
-	setupDirections();
+		// initialize user marker and map center at user location
+		getGeoLocation(function(position) {
+
+			// if coudn't return position (error or denied by user) - just center map on default location
+			if (!position) {
+				map.setCenter(getDefaultGeoLocation());
+			} else {
+				InfoService.setClientLocation(position);
+				map.setCenter(position);
+				setUserMarker(position);
+			}
+		});
+	}
+	google.maps.event.addDomListener(window, 'load',function() { initialize(); });
+
 }
 
 
-var directionsService = new google.maps.DirectionsService();
-var directionsRenderer = new google.maps.DirectionsRenderer();
-
-
-var setupDirections = function() {
-	directionsRenderer.setMap(map);
-	directionsRenderer.setPanel(marketInfoController.directionsPanel);
-}
 
 
 

@@ -4,9 +4,13 @@ var MarkerFactory = new MarkerFactory();
 
 var MarketController = function(map) {
 
+	// TODO - BETTER PLACE FOR THIS
+	this.marketInfoController = new MarketInfoController();
+
 	this.map = map;
 	this.marketList = [];
 	this.selectedMarket = null;
+
 }
 MarketController.prototype.init = function(dataset) {
 	
@@ -14,6 +18,7 @@ MarketController.prototype.init = function(dataset) {
 		var data = dataset[i];
 		this.addMarket(data);
 	}
+	DirectionsRendererFactory.setupDirections(this.map, this.marketInfoController.directionsPanel);
 }
 MarketController.prototype.addMarket = function(data) {
 	var self = this;
@@ -37,11 +42,20 @@ MarketController.prototype.marketOnSelect = function() {
 		this.map.setCenter(this.getPosition());
 		this.setIcon(MarkerFactory.makeIcon(market.data, true));
 
-		marketInfoController.showMarketContent(self.selectedMarket.data);
-
+		self.marketInfoController.showMarketContent(self.selectedMarket.data);
 	}
 	return callback;
 }
+MarketController.prototype.getDirections = function(travelMode) {
+	this.marketInfoController.getDirections(travelMode, this.selectedMarket);
+}
+MarketController.prototype.hideDirections = function() {
+	this.marketInfoController.hideDirections();
+}
+MarketController.prototype.hideMarketInfo = function() {
+	this.marketInfoController.hide();
+}
+
 
 
 var Market = function(map, data) {
