@@ -35,8 +35,9 @@ from app.data import api
 
 @app.route('/')
 def base():
-	return send_file('static/index.html')
+	return send_file('static/html/base.html')
 
+# TODO - when uncomment this, also uncomment test in test_views
 # @app.route('/admin')
 # @requires_auth
 # def admin():

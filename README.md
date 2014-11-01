@@ -101,8 +101,24 @@ Interface in ```/data/__init__.py```
 TODO
 ---
 
-- finish /admin page for creating new competitions
-- better menu button
+# DEVELOPMENT
+
+- put geolocation stuff in services
+
+- hide/show loading screen
+	- with resolve function in routes?
+	- see marked with TODO - SEE README ITEM in controllers.js
+
+- finish reorganizing /static to make app angularized (old stuff in /static-1)
+
+- menu
+	- make menu a directive
+	- fix menu button
+
+
+
+
+- buy domain name
 
 - do better with open/closed status
 	- check for open-date/close-date
