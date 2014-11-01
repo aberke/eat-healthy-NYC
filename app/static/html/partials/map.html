@@ -2,15 +2,11 @@
 
 <div id='map-view'>
 
+  <!-- menu-container is hidden until done loading - at which point loading-map-container hidden -->
+  <div id='loading-map-container'></div>
+  <div style="display:none" ng-include="'/static/menu/menu.html'" id='menu-container'></div>
 
-<!-- 	<div id='loading-map-container'>
-    </div> -->
-
-    <div ng-include="'/static/menu/menu.html'"></div>
-
-
-
-    <div id='main-view-container'>
+  <div id='main-view-container'>
 
 
     <div id="key">
