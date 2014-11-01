@@ -103,13 +103,9 @@ TODO
 
 # DEVELOPMENT
 
+- make sure all clicks work with iphone5
+
 - put geolocation stuff in services
-
-- hide/show loading screen
-	- with resolve function in routes?
-	- see marked with TODO - SEE README ITEM in controllers.js
-
-- finish reorganizing /static to make app angularized (old stuff in /static-1)
 
 - menu
 	- make menu a directive
@@ -124,12 +120,9 @@ TODO
 	- check for open-date/close-date
 	- better date parsing
 	- Market.prototype.setOpenClosedStatus
-		- uncomment and use h2 id='open-closed-title' OPEN | CLOSED /h2
-
-- refactor javascript
+		- uncomment and use h2 id='open-closed-title' OPEN | CLOSED /h2s
 
 - on get directions:
-	- center map to where you are location
 	- zoom out to show both destination and current location
 
 - do better job sanitizing hours data
