@@ -18,19 +18,14 @@
 
 function MapController($scope, $http, APIservice) {
 
+	/* When developing, uncomment DEVELOPMENT = true to center map's location on Union Square, etc */
+	var DEVELOPMENT = false;
+	// DEVELOPMENT = true;
 
-/* When developing, uncomment DEVELOPMENT = true to center map's location on Union Square, etc */
-var DEVELOPMENT = false;
-// DEVELOPMENT = true;
 
-
-var map;
-var marketController;
-var clientLocation;
-
-var mapLoaded = false;
-var dataLoaded = false;
-
+	var map;
+	var marketController;
+	var clientLocation;
 
 	/*-- I'm an AngularJS controller stuff ---------------------- */
 
@@ -187,30 +182,38 @@ function setUserMarker(clientLocation) {
 	});
 };
 
+	function hideLoading() {
+	  	var loadingContainer = document.getElementById('loading-map-container');
+	  	var menuContainer = document.getElementById('menu-container');
 
+	  	loadingContainer.style.display = "none";
+	  	menuContainer.style.display = "block";
+	}
+
+	/* build map.  
+	Show loading screen until all of the following are true:
+		- GET /markets returned all markets data
+		- map tiles loaded
+	*/
 	function initialize() {
 		map = buildMap("map-canvas");
 		marketController = new MarketController(map);
 
+
+		var dataLoaded = false;
+		var mapLoaded = false;
+
 		google.maps.event.addListener(map, 'tilesloaded', function() {
-		  // Visible tiles loaded!
+		  	// Visible tiles loaded!
 		  	mapLoaded = true;
-		  	if(dataLoaded) {
-			  	var loadingContainer = document.getElementById('loading-map-container');
-			  	// loadingContainer.style.display = "none"; TODO -- SEE README ITEM
-		  	}
+		  	dataLoaded && hideLoading(); // shorthand if else
 		});
 
 		APIservice.GET('/markets').then(function(ret) {
-				dataLoaded = true;
-
-			  	if(mapLoaded) {
-				  	var loadingContainer = document.getElementById('loading-map-container');
-				  	// loadingContainer.style.display = "none"; TODO - SEE README ITEM
-			  	}
-			  	console.log('get /markets: ', ret);
-				marketController.init(ret.data);
-			});
+			dataLoaded = true;
+			mapLoaded && hideLoading(); // shorthand if else
+			marketController.init(ret.data);
+		});
 
 		// initialize user marker and map center at user location
 		getGeoLocation(function(position) {
@@ -226,7 +229,6 @@ function setUserMarker(clientLocation) {
 		});
 	}
 	google.maps.event.addDomListener(window, 'load',function() { initialize(); });
-
 }
 
 
