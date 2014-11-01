@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <meta name="description" content="New York City Department of Health BigApps challenge.">
+    <meta name="author" content="Alex Berke & Wenting Zhang">
+    <link rel="shortcut icon" href="/static/favicon.png" type="image/x-icon">
+    
+    <title>Farmer Market NYC</title>
+    
+    <link href="/static/css/reset.css" rel="stylesheet">
+    <link href="/static/css/admin.css" rel="stylesheet">
+
+    <!-- FONT: Cabin condensed bold -- load from google -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    
+
+    <script src="/static/js/vendor/angular.min.js"></script>
+    <!-- script src="/static/js/vendor/angular-ui-router.min.js"></script -->
+    <!-- google maps api asset with key -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
+    </script>
+
+    <!-- script src="/static/js/app.js"></script -->
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="view">
+                <div>
+                    <div class="view-wrapper admin-view menu-active" ng-class="{'menu-active': view.menuActive, 'search-active': view.searchActive, }">
+                        <header>
+                            <div class="toolBar">
+                                <div class="menu" 
+                                    ng-class="{'menu-active': view.menuActive}" 
+                                    ng-click="view.menuActive = !view.menuActive"><i></i></div>
+                                <div class="search icon btn"
+                                     ng-click="view.searchActive = !view.searchActive"></div>
+                                <!-- <div class="edit icon btn"></div> -->
+                            </div>
+                            <input type="text" placeholder="Search by:"
+                                ng-model="searchText"
+                                ng-focus="view.searchActive">
+                            <h1 ng-click="view.searchActive = !view.searchActive">Dashboard</h1>
+                            <div class="roundBtn plus icon"></div>
+                        </header>
+                        <main>
+                            <ul class="markets">
+                                <li ng-repeat="entry in data | filter:searchText">
+                                    <h3>{{entry.name}}</h3>
+                                    <h4>
+                                        {{entry.location}}<br/>
+                                        {{ entry.City + ' '+entry.State + ' ' + entry.zipcode }}
+                                    </h4>
+                                </li>
+                            </ul>
+                        </main>
+                    </div>
+                </div>
+                <div ui-view="menu" class="menu-wrapper menu-active" ng-class="{'menu-active': view.menuActive}">
+                    <ul><span>Farmer Market</span>
+                        <li class="map link" ui-sref="view.map" ng-click="view.menuActive = 0">Market Map</li>
+                        <li class="dashboard link" ui-sref="view.admin" ng-click="view.menuActive = 0">Dashboard</li>
+                        <a class="github link" 
+                            ng-href="https://github.com/aberke/eat-healthy-NYC" target="_blank">Contribute</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
