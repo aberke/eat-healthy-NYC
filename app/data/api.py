@@ -31,11 +31,11 @@ def find_markets(id=None):
 	markets = db.markets.find(query)
 	return [m for m in markets]
 
+
 def find_one_market(**kwargs):
 	""" No test coverage TODO """
 	m = find_markets(**kwargs)
 	return m[0] if m else None
-
 
 
 def create_market(market_data):
@@ -53,8 +53,23 @@ def create_market(market_data):
 	return db.markets.insert(market_data)
 
 
+def delete_market(id):
+	id = sanitize_id(id)
+	db.markets.remove({ "_id": id })
 
 
+def update_market(id, data):
+	"""
+	Only allowed to update list info 
+	"""
+	data = sanitize_market_data(data)
+	data = stamp_last_modified(data)
+
+	ret = db.markets.update({ "_id": sanitize_id(id) }, { "$set": data})
+	
+	if not ret['updatedExisting']:
+		raise Exception("update_market failed to update an existing market")
+	return ret
 
 #--------------------------------------------------------- Interface -
 #---------------------------------------------------------------------

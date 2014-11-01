@@ -118,10 +118,6 @@ TODO
 
 
 
-
-
-
-
 - buy domain name
 
 - do better with open/closed status

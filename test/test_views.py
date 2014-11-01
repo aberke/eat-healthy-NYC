@@ -34,13 +34,13 @@ class ViewsTestCase(BaseTestCase):
 	def test_base_view(self):
 		self.expect_view_200('/')
 
-	def test_admin_view(self):
-		# admin view is protected with basic auth
-		rv = self.app.get('/admin')
-		self.assertEqual(rv.status_code, 401)
-		rv = self.app.get('/admin', headers=self.basic_auth_headers())
-		self.assertEqual(rv.status_code, 200)
-		self.assertTrue(int(rv.headers['Content-Length']) > 500)
+	# def test_admin_view(self):
+	# 	# admin view is protected with basic auth
+	# 	rv = self.app.get('/admin')
+	# 	self.assertEqual(rv.status_code, 401)
+	# 	rv = self.app.get('/admin', headers=self.basic_auth_headers())
+	# 	self.assertEqual(rv.status_code, 200)
+	# 	self.assertTrue(int(rv.headers['Content-Length']) > 500)
 
 
 
