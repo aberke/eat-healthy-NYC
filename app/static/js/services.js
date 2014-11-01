@@ -114,10 +114,8 @@ var APIservice = function($http, $q){
   this.DELETE = function(endpoint, data) {
     return HTTP('DELETE', endpoint, data);
   };
-
-
-  // this.GETmarkets
-
-
+  this.GETmarkets = function() {
+    return this.GET('/markets');
+  };
 
 };

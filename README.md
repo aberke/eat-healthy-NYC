@@ -111,6 +111,7 @@ TODO
 	- make menu a directive
 	- fix menu button
 
+- put google analytics in controller?
 
 
 

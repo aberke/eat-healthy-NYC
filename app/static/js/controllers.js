@@ -209,7 +209,7 @@ function setUserMarker(clientLocation) {
 		  	dataLoaded && hideLoading(); // shorthand if else
 		});
 
-		APIservice.GET('/markets').then(function(ret) {
+		APIservice.GETmarkets().then(function(ret) {
 			dataLoaded = true;
 			mapLoaded && hideLoading(); // shorthand if else
 			marketController.init(ret.data);

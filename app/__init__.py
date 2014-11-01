@@ -40,7 +40,7 @@ def base():
 @app.route('/admin')
 @requires_auth
 def admin():
-	return send_file('static/html/admin-base.html')
+	return send_file('static/admin/admin-base.html')
 
 #--------------------------------------------- User Interface -
 #--------------------------------------------------------------
