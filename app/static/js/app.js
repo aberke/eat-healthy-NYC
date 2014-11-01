@@ -148,6 +148,12 @@
 				templateUrl: '/static/templates/admin.html',
 				controller: 'AdminController',
 				controllerAs: 'admin'
+			})
+
+
+			.state('view.detail', {
+				url: '/detail',
+				templateUrl: '/static/templates/detail.html'
 			});
 
 		$urlRouterProvider.otherwise('/map');
