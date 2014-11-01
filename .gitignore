@@ -11,5 +11,8 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 .DS_STORE
+.DS_Store
+
+.sass-cache
 
 env.sh

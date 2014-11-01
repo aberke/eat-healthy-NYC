@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FarmersMarketsApp">
+<head>
+    <base href="/">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+
+    <meta name="description" content="New York City Department of Health BigApps challenge.">
+    <meta name="author" content="Alex Berke">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+
+<!-- 
+    <link href="/static/css/map.css" rel="stylesheet"> -->
+
+    <!-- FONT: Cabin condensed bold - load from google -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:700' rel='stylesheet' type='text/css'>
+
+
+    <!-- google maps api asset with key -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
+    </script>
+
+
+
+    <!-- javascript -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/services.js"></script>
+	<script src="/static/js/controllers.js"></script>
+    <script src="/static/js/routes.js"></script>
+
+    <script type="text/javascript" src="/static/js/marker-factory.js"></script>
+    <!-- // <script type="text/javascript" src="/static/js/map.js"></script> -->
+    <script type="text/javascript" src="/static/js/map-objects.js"></script>
+    <script type="text/javascript" src="/static/js/market-info-controller.js"></script>
+    <script type="text/javascript" src="/static/menu/menu-controller.js"></script>
+
+</head>
+<body>
+
+
+    <div id='view' ng-view></div>
+ 
+
+    <!-- using fastclick.js to prevent delay on mobile browsers -->
+    <script type='application/javascript' src="/static/js/vendor/fastclick.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
+
+    <script>
+      // track with google analytics
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-43101146-3', 'auto');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>

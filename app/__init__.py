@@ -13,7 +13,7 @@
 from flask import Flask, send_file, request
 from flask.ext.compress import Compress
 import json
-from util import dumpJSON, respond500
+from util import respond500, respond200
 from basic_auth import requires_auth
 
 
@@ -35,16 +35,12 @@ from app.data import api
 
 @app.route('/')
 def base():
-	return send_file('static/index.html')
+	return send_file('static/html/base.html')
 
-# @app.route('/admin')
-# @requires_auth
-# def admin():
-# 	return send_file('static/admin.html')
-
-@app.route('/data')
-def GET_data():
-	return GET_markets_all()
+@app.route('/admin')
+@requires_auth
+def admin():
+	return send_file('static/html/admin-base.html')
 
 #--------------------------------------------- User Interface -
 #--------------------------------------------------------------
@@ -59,38 +55,44 @@ def GET_data():
 @app.route('/api/markets', methods=['GET'])
 def GET_markets_all():
 	""" Returns list of markets """
-	return dumpJSON(data=api.find_markets())
+	return respond200(data=api.find_markets())
 
 
 @app.route('/api/markets/<id>', methods=['GET'])
 def GET_market(id):
 	market = api.find_one_market(id=id)
-	return dumpJSON(data=market)
+	return respond200(data=market)
 
-# TODO - AUTHENTICATION
+
 @app.route('/api/markets/<id>', methods=['DELETE'])
+@requires_auth
 def DELETE_market(id):
-	return 'TODO'
+	try:
+		market_id = api.delete_market(id)
+		return respond200()
+	except Exception as e:
+		return respond500(e)
 
-# TODO - AUTHENTICATION
+
 @app.route('/api/markets/<id>', methods=['PUT'])
+@requires_auth
 def PUT_market(id):
-	return 'TODO'
+	try:
+		market_data = json.loads(request.data)
+		ret = api.update_market(id, market_data)
+		return respond200()
+	except Exception as e:
+		return respond500(e)
 
-# TODO - AUTHENTICATION
 @app.route('/api/markets', methods=['POST'])
 @requires_auth
 def POST_market():
 	try:
 		market_data = json.loads(request.data)
 		market_id = api.create_market(market_data)
-		return dumpJSON(data={'_id': market_id})
+		return respond200(data={'_id': market_id})
 	except Exception as e:
 		return respond500(e)
-
-
-
-
 
 
 #- Admin API --------------------------------------------------

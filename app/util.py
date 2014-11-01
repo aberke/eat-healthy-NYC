@@ -43,7 +43,7 @@ class JSONEncoder(json.JSONEncoder):
 JSONencoder = JSONEncoder()
 
 
-def dumpJSON(data=None):
+def respond200(data=None):
 	response_data = {'data': data}
 	if not isinstance(data, str):
 		response_data = JSONencoder.encode(response_data)
