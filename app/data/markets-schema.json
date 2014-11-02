@@ -53,6 +53,14 @@
             },
             "required": ["start", "end"]
         },
+        "bad-days-data": {
+            "type": "boolean",
+            "description": "if couldn't extract hours - use operation-hours instead"
+        },
+        "operation-hours": {
+            "type":"string",
+            "description":"human readable hours data that wasn't yet parsed/cleansed",
+        },
         "days": {
             "type": "object",
             "properties": {
@@ -62,11 +70,15 @@
                     "description": "Start and end times, stored in UTC, for this day of the week.  Null if market not open this day.",
                     "start": {
                         "type": "string",
-                        "description": "UTC datetime"
+                        "description": "UTC seconds"
                     },
                     "end": {
                         "type": "string",
-                        "description": "UTC datetime"
+                        "description": "UTC seconds"
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "for badly formatted hours data, there is not yet a parsed start/end date"
                     }
                 },
                 "2": {
