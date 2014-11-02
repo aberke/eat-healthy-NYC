@@ -32,7 +32,6 @@ var MarketInfoController = function() {
 		this.infoElements.dayNames[i] = document.getElementById('day-name-' + i);
 		this.infoElements.dayHours[i] = document.getElementById('day-hours-' + i);
 	}
-	console.log(this.infoElements)
 }
 
 // hiding/showing elements with css selector .hidden (see map.css)
@@ -107,7 +106,13 @@ MarketInfoController.prototype.showMarketContent = function(data, contentString)
 		// iterate through all the days in the week and update the hours-table
 		for (var i=0; i<7; i++) {
 			// data.days is a sparsely populated map { (int) day: (string) hours }
-			this.infoElements.dayHours[i].innerHTML = cleanString(data.days[i]);
+
+			// setup hours
+			// TODO - use well formatted start and end here (see schema)
+			var dayHours = data.days[i] ? cleanString(data.days[i]['text']) : '';
+			this.infoElements.dayHours[i].innerHTML = dayHours;
+			
+			// set open/closed
 			if (data.days[i]) {
 				this.infoElements.dayNames[i].className = "open";
 				this.infoElements.dayHours[i].className = "open";
