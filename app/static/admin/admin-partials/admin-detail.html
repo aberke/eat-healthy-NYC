@@ -10,7 +10,7 @@
 	</div>
 	<div class="edit-wrapper">
 		<div class="textarea">
-			<textarea placeholder="Add market name" name="" id="" rows="2">{{market.location}}</textarea>
+			<textarea placeholder="Add market name" name="" id="" rows="2">{{market.name}}</textarea>
 		</div>
 	</div>
 
@@ -24,8 +24,8 @@
 			<h6>address</h6>
 			<div class="preview-wrapper">
 				<h3>
-                {{entry.location}}<br/>
-                {{ entry.City + ' '+entry.State + ' ' + entry.zipcode }}
+                {{market.location}}<br/>
+                {{ market.City + ' '+market.State + ' ' + market.zipcode }}
 				</h3>
 			</div>
 			<div class="edit-wrapper">
