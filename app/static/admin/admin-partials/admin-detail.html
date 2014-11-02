@@ -8,7 +8,8 @@
 		ng-model="searchText"
 		ng-focus="searchActive">
 	<h2	ng-click="searchActive = !searchActive">{{market.name}}</h2>
-	<div class="roundBtn edit icon"></div>
+	<div class="roundBtn edit icon hidden"></div>
+	<div class="roundBtn finish icon "></div>
 </header>
 <main class="edit-mode">
 	<div class="market">
@@ -18,9 +19,18 @@
 				<h3>{{market.location}}</h3>
 			</div>
 			<div class="edit-wrapper">
-				<textarea name="" id="" rows="4">{{market.location}}</textarea>
-				<input id="city-input" type="text" ng-model="market.county">
-				<input id="zipcode-input" type="text" ng-model="market.zipcode">
+				<div class="textarea">
+					<textarea name="" id="" rows="2">{{market.location}}</textarea>
+					<h6>street address</h6>
+				</div>
+				<div class="input">
+					<input id="city-input" type="text" ng-model="market.county">
+					<h6>City</h6>
+				</div>
+				<div class="input">
+					<input id="zipcode-input" type="text" ng-model="market.zipcode">
+					<h6>Zipcode</h6>
+				</div>
 			</div>
 		</div>
 		<div class="schedule icon">
@@ -105,7 +115,7 @@ to
 			<tbody>
 				<tr>
 					<th>YEAR ROUND</th>
-					<td>no</td>
+					<td>NO</td>
 				</tr>
 				<tr>
 					<th>START DATE</th>
@@ -122,16 +132,26 @@ to
 			<tbody>
 				<tr>
 					<th>YEAR ROUND</th>
-					<td><input type="checkbox" name="" id=""></td>
+					<td>
+					<input type="checkbox" name="" id="">
+					</td>
 				</tr>
 				<tr>
 					<th>START DATE</th>
-					<td><input type="date" name="" id=""></td>
+					<td>
+					<div class="input">
+						<input type="date" name="" id="">
+					</div>
+					</td>
 				</tr>
 
 				<tr>
 					<th>END DATE</th>
-					<td><input type="date" name="" id=""></td>
+					<td>
+					<div class="input">
+					<input type="date" name="" id="">
+					</div>
+					</td>
 				</tr>
 			</tbody>
 			</table>
@@ -205,16 +225,20 @@ to
 			<tbody>
 				<tr>
 					<th>WEBSITE</th>
-					<td><input type="text"></td>
+					<td>
+					<div class="input">
+						<input type="text">
+					</div>
+					</td>
 				</tr>
 				<tr>
 					<th>CONTACT</th>
-					<td><input type="text"></td>
+					<td><div class="input"><input type="text"></div></td>
 				</tr>
 
 				<tr>
 					<th>PHONE</th>
-					<td><input type="number"></td>
+					<td><div class="input"><input type="number"></div></td>
 				</tr>
 			</tbody>
 			</table>

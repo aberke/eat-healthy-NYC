@@ -83,6 +83,11 @@ $menuHeight : 60px;
 		@include gmi('\e69e');
 	}
 }
+.finish.icon {
+	&::before {
+		@include icomoon('\e65f');
+	}
+}
 .search.icon {
 	&::before {
 		@include gmi('\e83b');
@@ -188,19 +193,10 @@ textarea {
 	width: 100%;
 	padding: 0px;
 	box-sizing: border-box;
-	padding: 4px 8px;
-}
-input {
-	border: none;
-	display: block;
-	width: 100%;
-	padding: 0px;
-	box-sizing: border-box;
-	padding: 4px 8px;
-
 }
 div.textarea,
 div.input {
+	padding: 4px 8px;
 	position: relative;
 	border-bottom: solid 1px $highlightColor;
 	&:before {
@@ -261,6 +257,9 @@ input {
 
 :-ms-input-placeholder {  
    color: rgba(255,255,255,0.87);  
+}
+.hidden {
+	display: none;
 }
 .roundBtn {
 	cursor: pointer;
@@ -454,6 +453,8 @@ input {
 					padding-top: 3px;
 					padding-bottom: 3px;
 					padding-right: 20px;
+					white-space: nowrap;
+					width: 30%;
 				}
 				td {
 					line-height: 18px;
@@ -463,10 +464,22 @@ input {
 				}
 			}
 			.address {
+				&::after {
+
+					margin-top: 35px;
+				}
 				textarea, input {		
 					font-size: 18px;
 					color: $bodyTextBlack;
 					line-height: 20px;
+				}
+
+				input[type=text] {
+					border: none;
+					display: block;
+					width: 100%;
+					padding: 0px;
+					box-sizing: border-box;
 				}
 				.textarea, .input {
 					position: relative;
@@ -475,10 +488,21 @@ input {
 						position: absolute;
 						margin: 0;
 						bottom: -16px;
-						padding: 0 8px;
+						font-weight: 500;
+						margin-left: -8px;
 					}
 				}
 				
+			}
+			.season,
+			.program,
+			.contact {
+				input {							
+					font-weight: 400;
+					font-size: 14px;
+				}
+			}
+			.contact {
 			}
 			.program td {
 				padding-right: 50px;
