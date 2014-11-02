@@ -107,10 +107,6 @@ TODO
 
 - put geolocation stuff in services
 
-- menu
-	- make menu a directive
-	- fix menu button
-
 - put google analytics in controller?
 
 
