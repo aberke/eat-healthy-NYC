@@ -7,7 +7,7 @@
 	<input type="text" placeholder="Search by:"
 		ng-model="searchText"
 		ng-focus="searchActive">
-	<h2	ng-click="searchActive = !searchActive">Rochester/St. Mark's &amp; St. John's Youth Market</h2>
+	<h2	ng-click="searchActive = !searchActive">{{market.name}}</h2>
 	<div class="roundBtn edit icon"></div>
 </header>
 <main class="edit-mode">
@@ -15,22 +15,12 @@
 		<div class="address icon">
 			<h6>address</h6>
 			<div class="preview-wrapper">
-				<h3>McGolrick Park, Russel St. off Nassau Ave<br>
-					Kings 11222</h3>
+				<h3>{{market.location}}</h3>
 			</div>
 			<div class="edit-wrapper">
-				<div class="textarea">
-					<textarea name="" id="" rows="2">McGolrick Park, Russel St. off Nassau Ave</textarea>
-					<h6>street address</h6>
-				</div>
-				<div class="input">
-					<input type="text" value="Kings">
-					<h6>City</h6>
-				</div>
-				<div class="input">
-					<input type="text" value="11222">	
-					<h6>Zipcode</h6>
-				</div>
+				<textarea name="" id="" rows="4">{{market.location}}</textarea>
+				<input id="city-input" type="text" ng-model="market.county">
+				<input id="zipcode-input" type="text" ng-model="market.zipcode">
 			</div>
 		</div>
 		<div class="schedule icon">

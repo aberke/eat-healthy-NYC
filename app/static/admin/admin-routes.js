@@ -21,17 +21,11 @@ FarmersMarketsAdminApp.config(function($routeProvider) {
 		/*- client views ----------------------------------------------*/
 		.when('/admin', {
 			templateUrl: '/static/admin/admin-partials/admin-dashboard.html',
-			controller: AdminDashboardController,
-			resolve: {
-				markets: function(APIservice) {
-					return APIservice.GETmarkets().then(function(ret) {
-						return ret.data;
-					});
-				}
-			}
+			controller: AdminDashboardController
 		})
 		.when('/admin/detail/:marketId', {
 			templateUrl: '/static/admin/admin-partials/admin-detail.html',
+			controller: AdminDetailController
 		})
 
 		/*------------------------------------------------------- client views -*/

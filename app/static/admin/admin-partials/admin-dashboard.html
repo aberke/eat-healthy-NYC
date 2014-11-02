@@ -10,7 +10,7 @@
 </header>
 <main>
     <ul class="markets">
-        <li ng-repeat="entry in markets | filter:searchText">
+        <li ng-click="goToDetail(entry)" ng-repeat="entry in markets | filter:searchText">
             <h3>{{entry.name}}</h3>
             <h4>
                 {{entry.location}}<br/>
