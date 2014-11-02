@@ -33,77 +33,30 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="schedule icon">
 			<h6>schedule</h6>
-
+			<div style='border:1px solid red' ng-show="market['bad-hours-data']==true">
+				<p>TODO: format this</p>
+				<p>There is not yet machine readable data for this market's schedule.  Please enter market hours data below!</p>
+			</div>
+			<input type='time' ng-model='testDate'>
 			<table>
 			<tbody>
-				<tr>
-					<th>SUNDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
+				<tr ng-repeat="day in scheduleDays">
+					<th>{{scheduleDaysNames[day]}}</th>
+					
+					<td class="preview-wrapper">9am to 5pm | {{market.days[day]['start']}}</td>
+					
 					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="" value="09:00:00">
-to
-						<input class="day-end-time" type="time" name="" value="17:00:00">
-					</td>
-				</tr>
-				<tr>
-					<th>MONDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
-to
-						<input class="day-end-time" type="time" name="">
-					</td>
-				</tr>
+						<!-- for bad data, it's just {day: string} -->
+						<div ng-if="!(market.days[day]['start']&&market.days[day]['end'])">
+							{{market.days[day]['text']}}
+						</div>
 
-				<tr>
-					<th>TUESDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
+						<input class="day-start-time" type="time" name="" ng-model="market.days[day]['start']">
 to
-						<input class="day-end-time" type="time" name="">
-					</td>
-				</tr>
-
-				<tr>
-					<th>WEDNESDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
-to
-						<input class="day-end-time" type="time" name="">
-					</td>
-				</tr>
-
-				<tr>
-					<th>THURSDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
-to
-						<input class="day-end-time" type="time" name="">
-					</td>
-				</tr>
-
-				<tr>
-					<th>FRIDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
-to
-						<input class="day-end-time" type="time" name="">
-					</td>
-				</tr>
-
-				<tr>
-					<th>SATURDAY</th>
-					<td class="preview-wrapper">9am to 5pm</td>
-					<td class="edit-wrapper">
-						<input class="day-start-time" type="time" name="">
-to
-						<input class="day-end-time" type="time" name="">
+						<input class="day-end-time" type="time" name=""  ng-model="market.days[day]['end']">
 					</td>
 				</tr>
 			</tbody>
