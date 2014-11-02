@@ -1,5 +1,19 @@
 <header ng-class="{'edit-mode': editMode==true}">
-	<h2>{{market.name}}</h2>
+
+	<div class="toolBar" style="visibility: hidden">
+		<div class="back icon"></div>
+		<div class="search icon btn"
+			 ng-click="view.searchActive = !view.searchActive"></div>
+	</div>
+	<div class="preview-wrapper">
+		<h2>{{market.name}}</h2>
+	</div>
+	<div class="edit-wrapper">
+		<div class="textarea">
+			<textarea placeholder="Add market name" name="" id="" rows="2">{{market.location}}</textarea>
+		</div>
+	</div>
+
 	<div ng-click="edit()" class="roundBtn edit icon"></div>
 	<div ng-click="save()" class="roundBtn finish icon"></div>
 </header>
@@ -9,7 +23,10 @@
 		<div class="address icon">
 			<h6>address</h6>
 			<div class="preview-wrapper">
-				<h3>{{market.location}}</h3>
+				<h3>
+                {{entry.location}}<br/>
+                {{ entry.City + ' '+entry.State + ' ' + entry.zipcode }}
+				</h3>
 			</div>
 			<div class="edit-wrapper">
 				<div class="textarea">
@@ -147,16 +164,16 @@ to
 			<tbody>
 				<tr>
 					<th>WEBSITE</th>
-					<td><a target="_blank" href="http://freshconnect.ny.gov/programs">http://freshconnect.ny.gov/programs</a></td>
+					<td><a target="_blank" ng-href="market['Market Link']">{{market['Market Link']}}</a></td>
 				</tr>
 				<tr>
 					<th>CONTACT</th>
-					<td>&nbsp;</td>
+					<td>{{market.Contact}}</td>
 				</tr>
 
 				<tr>
 					<th>PHONE</th>
-					<td>&nbsp;</td>
+					<td>{{market.Phone}}</td>
 				</tr>
 			</tbody>
 			</table>
@@ -168,18 +185,18 @@ to
 					<th width="30">WEBSITE</th>
 					<td width="70">
 					<div class="input">
-						<input type="text">
+						<input type="text" ng-model="market['Market Link']">
 					</div>
 					</td>
 				</tr>
 				<tr>
 					<th>CONTACT</th>
-					<td><div class="input"><input type="text"></div></td>
+					<td><div class="input"><input type="text" ng-model="market.Contact"></div></td>
 				</tr>
 
 				<tr>
 					<th>PHONE</th>
-					<td><div class="input"><input type="number"></div></td>
+					<td><div class="input"><input type="number" ng-modle="market.Phone"></div></td>
 				</tr>
 			</tbody>
 			</table>
