@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FarmersMarketsAdminApp">
 <head>
-    <!-- <base href="/"> -->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
 
@@ -37,19 +36,20 @@
 
     <div class='view'>
         <div class="view-wrapper admin-view" ng-class="{'menu-active': menuActive, 'search-active': searchActive }">
-            <div class='menu-button' ng-class="{'menu-active': menuActive}" ng-click="toggleMenu()"><i></i></div>
+            <div class='menu-button' ng-class="{'menu-active': menuActive}" ng-click="menuActive=!menuActive"><i></i></div>
             <div ng-view></div>
         </div>
     </div>
 
     <div id="menu" class="menu-wrapper" ng-class="{'menu-active': menuActive}">
-        <ul><span>Farmer Market</span>
-            <li class="map link" ng-click="menuActive = 0">Market Map</li>
-            <li class="dashboard link" ng-click="menuActive = 0">Dashboard</li>
-            <a class="github link" 
-                ng-href="https://github.com/aberke/eat-healthy-NYC" target="_blank">Contribute</a>
-        </ul>
+      <ul><span>Farmer Market</span>
+          <li class="map link" ng-click="goToMap()">Market Map</li>
+          <li class="dashboard link" ng-click="goToAdmin()">Admin</li>
+          <a class="github link" ng-href="https://github.com/aberke/eat-healthy-NYC" target="_blank">Contribute</a>
+      </ul>
     </div>
+
+
 
  
 

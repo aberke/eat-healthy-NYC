@@ -103,13 +103,11 @@ TODO
 
 # DEVELOPMENT
 
+- wenting - change menu-button class to id
+
 - make sure all clicks work with iphone5
 
 - put geolocation stuff in services
-
-- menu
-	- make menu a directive
-	- fix menu button
 
 - put google analytics in controller?
 
