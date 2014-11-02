@@ -1,10 +1,15 @@
 
 // wraps around all of admin-base
-AdminMainController = function($scope) {
+AdminMainController = function($scope, $window) {
 
-	$scope.menuActive = false;
-	$scope.toggleMenu = function() {
-		$scope.menuActive=!$scope.menuActive;
+	var domain = $window.location.origin;
+
+	/* menu controllers */
+	$scope.goToAdmin = function() {
+		$scope.menuActive = false;
+	}
+	$scope.goToMap = function() {
+		$window.location.href = domain;
 	}
 }
 

@@ -13,10 +13,9 @@
 
 
 
+function MapController($scope, $http, $window, $location, APIservice) {
 
-
-
-function MapController($scope, $http, APIservice) {
+	var domain = $window.location.origin;
 
 	/* When developing, uncomment DEVELOPMENT = true to center map's location on Union Square, etc */
 	var DEVELOPMENT = false;
@@ -38,6 +37,14 @@ function MapController($scope, $http, APIservice) {
 	}
 	$scope.hideMarketInfo = function() {
 		marketController.hideMarketInfo();
+	}
+
+	/* menu controllers */
+	$scope.goToAdmin = function() {
+		$window.location.href = domain + "/admin";
+	}
+	$scope.goToMap = function() {
+		$scope.menuActive = false;
 	}
 
 	/*---------------------- I'm an AngularJS controller stuff -- */
