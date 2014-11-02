@@ -260,6 +260,10 @@ input {
   background-color: transparent;
   border: none; }
 
+input[type="time"] {
+  width: 60px;
+  border-bottom: solid 1px #FFD740; }
+
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.87); }
 
@@ -276,6 +280,16 @@ input {
 
 .hidden {
   display: none; }
+
+.warning {
+  background-color: #FFD740;
+  color: rgba(0, 0, 0, 0.56);
+  font-weight: 900;
+  font-size: 11px;
+  line-height: 15px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  margin-bottom: 16px; }
 
 .roundBtn {
   cursor: pointer;
@@ -483,6 +497,23 @@ input {
     .view main div.market .contact input {
       font-weight: 400;
       font-size: 14px; }
+    .view main div.market .program td.selected {
+      position: relative;
+      border-bottom: solid 1px #1B905C; }
+      .view main div.market .program td.selected::after {
+        content: "";
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        right: 20px;
+        color: #1B905C; }
     .view main div.market .program td {
       padding-right: 50px; }
   .view main .preview-wrapper {

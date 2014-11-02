@@ -243,6 +243,10 @@ input {
 	background-color: transparent;
 	border: none;
 }
+input[type="time"] {
+	width: 60px;
+	border-bottom: solid 1px $highlightColor;
+}
 ::-webkit-input-placeholder {
    color: rgba(255,255,255,0.87);
 }
@@ -260,6 +264,16 @@ input {
 }
 .hidden {
 	display: none;
+}
+.warning {
+	background-color: $highlightColor;
+	color: rgba(0,0,0,0.56);
+	font-weight: 900;
+	font-size: 11px;
+	line-height: 15px;
+	padding: 8px 12px;
+	text-transform: uppercase;
+	margin-bottom: 16px;
 }
 .roundBtn {
 	cursor: pointer;
@@ -514,6 +528,18 @@ input {
 				input {							
 					font-weight: 400;
 					font-size: 14px;
+				}
+			}
+			.program {
+				td.selected {
+					position: relative;
+					border-bottom: solid 1px $gradientColor1;
+					&::after {
+						@include icomoon('\e65f');
+						position: absolute;
+						right: 20px;
+						color: $gradientColor1;
+					}
 				}
 			}
 			.contact {

@@ -11,7 +11,7 @@
 	<div class="roundBtn edit icon"></div>
 	<div class="roundBtn finish icon "></div>
 </header>
-<main class="">
+<main class="edit-mode">
 	<div class="market">
 		<div class="address icon">
 			<h6>address</h6>
@@ -36,13 +36,10 @@
 
 		<div class="schedule icon">
 			<h6>schedule</h6>
-			<div style='border:1px solid red' ng-show="market['bad-hours-data']==true">
-				<p>TODO: format this</p>
-				<p>There is not yet machine readable data for this market's schedule.  Please enter market hours data below!</p>
+			<div class="warning" ng-show="market['bad-hours-data']==true">
+				<p>There is not yet machine readable data for this market's schedule.  Please enter market hours data by click the edit button</p>
 			</div>
-			<input type='time' ng-model='testDate'>
 			<table>
-			<tbody>
 				<tr ng-repeat="day in scheduleDays">
 					<th>{{scheduleDaysNames[day]}}</th>
 					
@@ -59,7 +56,6 @@ to
 						<input class="day-end-time" type="time" name=""  ng-model="market.days[day]['end']">
 					</td>
 				</tr>
-			</tbody>
 			</table>
 		</div>
 		<div class="season icon">
@@ -119,16 +115,12 @@ to
 			<table>
 			<tbody>
 				<tr>
-					<td>FMNP</td>
-					<td>Stellar</td>
+					<td ng-class="{'selected': market.FMNP}">FMNP</td>
+					<td ng-class="{'selected': market.Stellar}">Stellar</td>
 				</tr>
 				<tr>
-					<td>EBT</td>
-					<td>CSWCKS</td>
-				</tr>
-				<tr>
-					<td>WIC</td>
-					<td>&nbsp;</td>
+					<td ng-class="{'selected': market.EBT}">EBT</td>
+					<td ng-class="{'selected': market.CSWCKS}">CSWCKS</td>
 				</tr>
 			</tbody>
 			</table>
@@ -138,25 +130,17 @@ to
 			<tbody>
 				<tr>
 					<td>
-					<label><input type="checkbox" name="" id="" value="value">FMNP</label>	
+					<label><input type="checkbox" name="" id="" ng-model="market.FMNP">FMNP</label>	
 					</td>
 					<td>
-					<label><input type="checkbox" name="" id="" value="value">Stellar</label></td>
+					<label><input type="checkbox" name="" id="" ng-model="market.Stellar">Stellar</label></td>
 				</tr>
 				<tr>
 					<td>
-					<label><input type="checkbox" name="" id="" value="value">EBT</label>
+					<label><input type="checkbox" name="" id="" ng-model="market.EBT">EBT</label>
 					</td>
 					<td>
-					<label><input type="checkbox" name="" id="" value="value">CSWCKS</label>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-					<label><input type="checkbox" name="" id="" value="value">WIC</label>
-					</td>
-					<td>&nbsp;
+					<label><input type="checkbox" name="" id="" ng-model="market.CSWCKs">CSWCKS</label>
 					</td>
 				</tr>
 			</tbody>
