@@ -30,6 +30,9 @@ FarmersMarketsAdminApp.config(function($routeProvider) {
 				}
 			}
 		})
+		.when('/admin/detail/:marketId', {
+			templateUrl: '/static/admin/admin-partials/admin-detail.html',
+		})
 
 		/*------------------------------------------------------- client views -*/
 

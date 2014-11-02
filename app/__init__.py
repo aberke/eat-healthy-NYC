@@ -38,8 +38,9 @@ def base():
 	return send_file('static/html/base.html')
 
 @app.route('/admin')
+@app.route('/admin/detail/<market_id>')
 @requires_auth
-def admin():
+def admin(market_id=None):
 	return send_file('static/admin/admin-base.html')
 
 

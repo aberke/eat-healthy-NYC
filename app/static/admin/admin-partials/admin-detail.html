@@ -1,14 +1,14 @@
-<div class="view-wrapper detail-view" ng-class="{'menu-active': view.menuActive, 'search-active': view.searchActive, }">
+
 	<header>
 		<div class="toolBar">
 			<div class="back icon"></div>
 			<div class="search icon btn"
-				 ng-click="view.searchActive = !view.searchActive"></div>
+				 ng-click="searchActive = !searchActive"></div>
 		</div>
 		<input type="text" placeholder="Search by:"
 			ng-model="searchText"
-			ng-focus="view.searchActive">
-		<h2	ng-click="view.searchActive = !view.searchActive">Rochester/St. Mark's & St. John's Youth Market</h2>
+			ng-focus="searchActive">
+		<h2	ng-click="searchActive = !searchActive">Rochester/St. Mark's &amp; St. John's Youth Market</h2>
 		<div class="roundBtn edit icon"></div>
 	</header>
 	<main>
@@ -119,4 +119,3 @@
 			</div>
 		</div>
 	</main>
-</div>
