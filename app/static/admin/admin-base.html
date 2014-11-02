@@ -12,7 +12,7 @@
     <!-- FONT: Cabin condensed bold - load from google -->
     <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:700' rel='stylesheet' type='text/css'>
 
-    <link href='/static/css/admin.css' rel='stylesheet' type='text/css'>
+    <link href='/static/admin/css/admin.css' rel='stylesheet' type='text/css'>
 
     <!-- google maps api asset with key -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFuETDB8Qj8Du3fU7NR6RkRwIOx4_KmdY">
@@ -30,10 +30,16 @@
     <script src="/static/admin/admin-routes.js"></script>
 
 </head>
-<body>
-    <div id='view' ng-view></div>
-                
-    <div id="menu" class="menu-wrapper menu-active" ng-class="{'menu-active': menuActive}">
+<body ng-controller="AdminMainController">
+
+    <div class='view'>
+        <div class="view-wrapper admin-view" ng-class="{'menu-active': menuActive, 'search-active': searchActive }">
+            <div id="menu-button" class='menu' ng-class="{'menu-active': menuActive}" ng-click="toggleMenu()"><i></i></div>
+            <div ng-view></div>
+        </div>
+    </div>
+
+    <div id="menu" class="menu-wrapper" ng-class="{'menu-active': menuActive}">
         <ul><span>Farmer Market</span>
             <li class="map link" ng-click="menuActive = 0">Market Map</li>
             <li class="dashboard link" ng-click="menuActive = 0">Dashboard</li>

@@ -11,6 +11,16 @@
 		green: #22b473;#C4E71E
 #--------------------------------------------------------------------------------
 #********************************************************************************/
+
+/* alex - wenting to work into sass */
+#menu-button {
+  position: absolute;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?l5ockb");
