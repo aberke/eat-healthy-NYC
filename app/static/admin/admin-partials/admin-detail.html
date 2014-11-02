@@ -1,121 +1,224 @@
-
-	<header>
-		<div class="toolBar">
-			<div class="back icon"></div>
-			<div class="search icon btn"
-				 ng-click="searchActive = !searchActive"></div>
-		</div>
-		<input type="text" placeholder="Search by:"
-			ng-model="searchText"
-			ng-focus="searchActive">
-		<h2	ng-click="searchActive = !searchActive">Rochester/St. Mark's &amp; St. John's Youth Market</h2>
-		<div class="roundBtn edit icon"></div>
-	</header>
-	<main>
-		<div class="market">
-			<div class="address icon">
-				<h6>address</h6>
+<header>
+	<div class="toolBar">
+		<div class="back icon"></div>
+		<div class="search icon btn"
+			 ng-click="searchActive = !searchActive"></div>
+	</div>
+	<input type="text" placeholder="Search by:"
+		ng-model="searchText"
+		ng-focus="searchActive">
+	<h2	ng-click="searchActive = !searchActive">Rochester/St. Mark's &amp; St. John's Youth Market</h2>
+	<div class="roundBtn edit icon"></div>
+</header>
+<main class="edit-mode">
+	<div class="market">
+		<div class="address icon">
+			<h6>address</h6>
+			<div class="preview-wrapper">
 				<h3>McGolrick Park, Russel St. off Nassau Ave<br>
 					Kings 11222</h3>
 			</div>
-			<div class="schedule icon">
-				<h6>schedule</h6>
-				<table>
-				<tbody>
-					<tr>
-						<th>SUNDAY</th>
-						<td>Closed</td>
-					</tr>
-					<tr>
-						<th>MONDAY</th>
-						<td>Closed</td>
-					</tr>
-
-					<tr>
-						<th>TUESDAY</th>
-						<td>Closed</td>
-					</tr>
-
-					<tr>
-						<th>WEDNESDAY</th>
-						<td>Closed</td>
-					</tr>
-
-					<tr>
-						<th>THURSDAY</th>
-						<td>Closed</td>
-					</tr>
-
-					<tr>
-						<th>FRIDAY</th>
-						<td>Closed</td>
-					</tr>
-
-					<tr>
-						<th>SATURDAY</th>
-						<td>Closed</td>
-					</tr>
-				</tbody>
-				</table>
-			</div>
-			<div class="season icon">
-				<h6>season</h6>
-				<table>
-				<tbody>
-					<tr>
-						<th>YEAR ROUND</th>
-						<td>radio box here</td>
-					</tr>
-					<tr>
-						<th>START DATE</th>
-						<td>&nbsp;</td>
-					</tr>
-
-					<tr>
-						<th>END DATE</th>
-						<td>&nbsp;</td>
-					</tr>
-				</tbody>
-				</table>
-			</div>
-			<div class="program icon">
-				<h6>program</h6>
-				<table>
-				<tbody>
-					<tr>
-						<td>FMNP</td>
-						<td>Stellar</td>
-					</tr>
-					<tr>
-						<td>EBT</td>
-						<td>CSWCKS</td>
-					</tr>
-					<tr>
-						<td>WIC</td>
-						<td>&nbsp;</td>
-					</tr>
-				</tbody>
-				</table>
-			</div>
-			<div class="contact icon">
-				<h6>contact</h6>
-				<table>
-				<tbody>
-					<tr>
-						<th>WEBSITE</th>
-						<td><a target="_blank" href="http://freshconnect.ny.gov/programs">http://freshconnect.ny.gov/programs</a></td>
-					</tr>
-					<tr>
-						<th>CONTACT</th>
-						<td>&nbsp;</td>
-					</tr>
-
-					<tr>
-						<th>PHONE</th>
-						<td>&nbsp;</td>
-					</tr>
-				</tbody>
-				</table>
+			<div class="edit-wrapper">
+				<textarea name="" id="" rows="4">McGolrick Park, Russel St. off Nassau Ave</textarea>
+				<input type="text" value="Kings">
+				<input type="text" value="11222">
 			</div>
 		</div>
-	</main>
+		<div class="schedule icon">
+			<h6>schedule</h6>
+
+			<table>
+			<tbody>
+				<tr>
+					<th>SUNDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="" value="09:00:00">
+to
+						<input class="day-end-time" type="time" name="" value="17:00:00">
+					</td>
+				</tr>
+				<tr>
+					<th>MONDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+
+				<tr>
+					<th>TUESDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+
+				<tr>
+					<th>WEDNESDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+
+				<tr>
+					<th>THURSDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+
+				<tr>
+					<th>FRIDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+
+				<tr>
+					<th>SATURDAY</th>
+					<td class="preview-wrapper">9am to 5pm</td>
+					<td class="edit-wrapper">
+						<input class="day-start-time" type="time" name="">
+to
+						<input class="day-end-time" type="time" name="">
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		<div class="season icon">
+			<h6>season</h6>
+			<table class="preview-wrapper">
+			<tbody>
+				<tr>
+					<th>YEAR ROUND</th>
+					<td>no</td>
+				</tr>
+				<tr>
+					<th>START DATE</th>
+					<td>MAY 12</td>
+				</tr>
+
+				<tr>
+					<th>END DATE</th>
+					<td>SEP 12</td>
+				</tr>
+			</tbody>
+			</table>
+			<table class="edit-wrapper">
+			<tbody>
+				<tr>
+					<th>YEAR ROUND</th>
+					<td><input type="checkbox" name="" id=""></td>
+				</tr>
+				<tr>
+					<th>START DATE</th>
+					<td><input type="date" name="" id=""></td>
+				</tr>
+
+				<tr>
+					<th>END DATE</th>
+					<td><input type="date" name="" id=""></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		<div class="program icon">
+			<h6>program</h6>
+			<table class="preview-wrapper">
+			<tbody>
+				<tr>
+					<td>FMNP</td>
+					<td>Stellar</td>
+				</tr>
+				<tr>
+					<td>EBT</td>
+					<td>CSWCKS</td>
+				</tr>
+				<tr>
+					<td>WIC</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+			</table>
+			<table class="edit-wrapper">
+			<tbody>
+				<tr>
+					<td>
+					<label><input type="checkbox" name="" id="" value="value">FMNP</label>	
+					</td>
+					<td>
+					<label><input type="checkbox" name="" id="" value="value">Stellar</label></td>
+				</tr>
+				<tr>
+					<td>
+					<label><input type="checkbox" name="" id="" value="value">EBT</label>
+					</td>
+					<td>
+					<label><input type="checkbox" name="" id="" value="value">CSWCKS</label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<label><input type="checkbox" name="" id="" value="value">WIC</label>
+					</td>
+					<td>&nbsp;
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		<div class="contact icon">
+			<h6>contact</h6>
+			<table class="preview-wrapper">
+			<tbody>
+				<tr>
+					<th>WEBSITE</th>
+					<td><a target="_blank" href="http://freshconnect.ny.gov/programs">http://freshconnect.ny.gov/programs</a></td>
+				</tr>
+				<tr>
+					<th>CONTACT</th>
+					<td>&nbsp;</td>
+				</tr>
+
+				<tr>
+					<th>PHONE</th>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+			</table>
+			<table class="edit-wrapper">
+			<tbody>
+				<tr>
+					<th>WEBSITE</th>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<th>CONTACT</th>
+					<td><input type="text"></td>
+				</tr>
+
+				<tr>
+					<th>PHONE</th>
+					<td><input type="number"></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</main>

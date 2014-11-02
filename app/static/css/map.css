@@ -17,7 +17,7 @@
 	padding: 0;
 	border: none;
 	/*defined font in stylesheet loaded from google*/
-	font-family: 'Cabin Condensed', sans-serif;
+	font-family: 'Cabin Condensed', sans-serif!important;
 }
 html, body {
 	height: 100%;

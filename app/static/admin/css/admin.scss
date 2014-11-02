@@ -182,6 +182,13 @@ h3 {
 	color: $bodyTextBlack;
 	line-height: 20px;
 }
+textarea {
+	font-size: 18px;
+	color: $bodyTextBlack;
+	line-height: 20px;
+	border: none;
+	border-bottom: dotted 1px $gradientColor1;
+}
 h4 {
 	font-size: 16px;
 	color: #999999;
@@ -189,7 +196,7 @@ h4 {
 }
 h6 {
 	font-weight: 900;
-	font-size: 10px;
+	font-size: 11px;
 	color: #999999;
 	line-height: 12px;
 	text-transform: uppercase;
@@ -202,7 +209,7 @@ a {
 }
 input {
 	font-family: $font;
-	color: #ffffff;
+	color: $bodyTextBlack;
 	background-color: transparent;
 	border: none;
 }
@@ -425,9 +432,21 @@ input {
 				padding-right: 50px;
 			}
 		}
-	}
-	
-	.detail-view main {
+
+		.preview-wrapper {
+			display: block !important;
+		}
+		.edit-wrapper {
+			display: none !important;
+		}
+		&.edit-mode {
+			.preview-wrapper {
+				display: none !important;
+			}
+			.edit-wrapper {
+				display: block !important;
+			}
+		}
 	}
 
 }
@@ -494,7 +513,7 @@ input {
 	height: 100%;
 	top: 0px;
 	left: 0px;
-} */
+} */ 
 .menu-button {
 	position: absolute;
 	top: 10px;
@@ -502,6 +521,7 @@ input {
 	width: 40px;
 	height:  40px;
 	cursor: pointer;
+	z-index: 999;
 	i {
 		position: absolute;
 		width: 20px;
