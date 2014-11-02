@@ -81,7 +81,6 @@ def DELETE_market(id):
 def PUT_market(id):
 	try:
 		market_data = json.loads(request.data)
-		print('market_data', market_data)
 		ret = api.update_market(id, market_data)
 		return respond200()
 	except Exception as e:

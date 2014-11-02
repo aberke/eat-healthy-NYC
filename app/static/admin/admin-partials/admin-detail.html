@@ -49,15 +49,30 @@
 			<div class="warning" ng-show="market['bad-hours-data']==true">
 				<p>There is not yet machine readable data for this market's schedule.  Please enter market hours data by click the edit button</p>
 			</div>
+
+			<div ng-show="market['bad-hours-data']==true">
+				<p>{{market['operation-hours']}}</p>
+				<br/>
+				</div>
 			<table>
 				<tr ng-repeat="day in scheduleDays">
 					<th>{{scheduleDaysNames[day]}}</th>
 					
-					<td class="preview-wrapper">9am to 5pm | {{market.days[day]['start']}}</td>
+
+					<td class="preview-wrapper">
+
+						<span ng-show="!(market.days[day]['start'] && market.days[day]['end'])">{{market.days[day]['text']}}</span>
+						<span ng-show="!!(market.days[day]['start'] && market.days[day]['end'])">{{market.days[day]['start'] + ' to ' + market.days[day]['end']}}</span>
+
+						<span ng-show="!((market.days[day]['start'] && market.days[day]['end'])|market.days[day]['text'])">CLOSED</span>
+
+
+					</td>
+					
 					
 					<td class="edit-wrapper">
 						<!-- for bad data, it's just {day: string} -->
-						<div ng-if="!(market.days[day]['start']&&market.days[day]['end'])">
+						<div ng-if="!(market.days[day]['start'] && market.days[day]['end'])">
 							{{market.days[day]['text']}}
 						</div>
 
