@@ -1,5 +1,20 @@
 
-
+<div id='menu-view' ng-controller="MenuController">
+  <div class="map-header"  ng-class="{'menu-active': menuActive}">
+    <div class="menu-button" 
+          ng-class="{'menu-active': menuActive}" 
+          ng-click="toggleMenu();"><i></i></div>
+  </div>
+  <div ui-view="menu"class="menu-wrapper" ng-class="{'menu-active': menuActive}">
+      <ul><span>Farmer Market</span>
+          <li class="map link" href="/">Market Map</li>
+          <li class="dashboard link" href="/admin">Dashboard</li>
+          <a class="github link" 
+              ng-href="https://github.com/aberke/eat-healthy-NYC" target="_blank">Contribute</a>
+      </ul>
+  </div>
+</div>
+<!-- 
 <div id='menu-view' ng-controller="MenuController">
 
 
@@ -25,4 +40,4 @@
 
   </div>
   
-</div>
+</div> -->

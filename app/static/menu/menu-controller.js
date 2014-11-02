@@ -26,8 +26,10 @@ MenuController = function($scope) {
 
 		if (mainViewContainer.collapsed) {
 			mainViewContainer.element.className = '';
+			$scope.menuActive = false;
 		} else {
 			mainViewContainer.element.className = 'collapsed';
+			$scope.menuActive = true;
 
 		}
 		mainViewContainer.collapsed = !mainViewContainer.collapsed;

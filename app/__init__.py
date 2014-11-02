@@ -42,6 +42,7 @@ def base():
 def admin():
 	return send_file('static/html/admin-base.html')
 
+
 #--------------------------------------------- User Interface -
 #--------------------------------------------------------------
 

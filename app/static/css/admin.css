@@ -308,57 +308,6 @@ input {
         .view header .toolBar .back.icon::before {
           text-align: center;
           line-height: 40px; }
-      .view header .toolBar .menu {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 40px;
-        height: 40px;
-        cursor: pointer; }
-        .view header .toolBar .menu i {
-          position: absolute;
-          width: 20px;
-          height: 3px;
-          top: 19px;
-          right: 10px;
-          background-color: #ffffff;
-          -webkit-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in; }
-        .view header .toolBar .menu i::before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 3px;
-          top: -5px;
-          background-color: #ffffff;
-          -webkit-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in; }
-        .view header .toolBar .menu i::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 3px;
-          top: 5px;
-          background-color: #ffffff;
-          -webkit-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in; }
-      .view header .toolBar .menu.menu-active i {
-        background-color: rgba(255, 255, 255, 0); }
-      .view header .toolBar .menu.menu-active i::before {
-        top: 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg); }
-      .view header .toolBar .menu.menu-active i::after {
-        top: 0;
-        -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
     .view header input {
       font-size: 35px;
       padding: 10px 20px 10px 72px;
@@ -458,6 +407,7 @@ input {
 
 /********************view.menu ****************/
 .menu-wrapper {
+  z-index: 9999;
   position: absolute;
   width: 75%;
   height: 100%;
@@ -526,11 +476,80 @@ input {
         font-size: 22px; }
 
 /********************view.map **************/
-#farmer-market-map {
+/* #farmer-market-map {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+} */
+.menu-button {
   position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer; }
+  .menu-button i {
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    top: 19px;
+    right: 10px;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+  .menu-button i::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: -5px;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+  .menu-button i::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 5px;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+
+.menu-button.menu-active i {
+  background-color: rgba(255, 255, 255, 0); }
+.menu-button.menu-active i::before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+.menu-button.menu-active i::after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
+.map-header {
   width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px; }
+  height: 60px;
+  background-color: rgba(27, 144, 92, 0.6);
+  position: absolute;
+  top: 0;
+  z-index: 99999;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in; }
+  .map-header.menu-active {
+    -webkit-transform: translateX(75%);
+    -ms-transform: translateX(75%);
+    -o-transform: translateX(75%);
+    transform: translateX(75%); }
 
 /*# sourceMappingURL=admin.css.map */

@@ -312,66 +312,7 @@ input {
 					line-height: 40px;
 				}
 			}
-			.menu {
-				position: absolute;
-				top: 10px;
-				left: 10px;
-				width: 40px;
-				height:  40px;
-				cursor: pointer;
-				i {
-					position: absolute;
-					width: 20px;
-					height: 3px;
-					top: 19px;
-					right: 10px;
-					background-color: #ffffff;
-					-webkit-transition: all $animation ease-in;
-					-o-transition: all $animation ease-in;
-					transition: all $animation ease-in;
-				}
-				i::before {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 3px;
-					top: -5px;
-					background-color: #ffffff;
-					-webkit-transition: all $animation ease-in;
-					-o-transition: all $animation ease-in;
-					transition: all $animation ease-in;
-				}
-				i::after {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 3px;
-					top: 5px;
-					background-color: #ffffff;
-					-webkit-transition: all $animation ease-in;
-					-o-transition: all $animation ease-in;
-					transition: all $animation ease-in;
-				}
-			}
-			.menu.menu-active {
-				i {
-					background-color: rgba(white, 0);
-				}
-				i::before {
-					top: 0;
-					-webkit-transform: rotate(45deg);
-					-ms-transform: rotate(45deg);
-					-o-transform: rotate(45deg);
-					transform: rotate(45deg);
-				}
-				i::after {
-					top: 0;
-					-webkit-transform: rotate(-45deg);
-					-ms-transform: rotate(-45deg);
-					-o-transform: rotate(-45deg);
-					transform: rotate(-45deg);
-				}
-			}
+			
 		}
 		input {
 			font-size: 35px;
@@ -492,6 +433,7 @@ input {
 }
 /********************view.menu ****************/
 .menu-wrapper {
+	z-index: 9999;
 	position: absolute;
 	width: 75%;
 	height: 100%;
@@ -546,10 +488,88 @@ input {
 	}
 }
 /********************view.map **************/
-#farmer-market-map {
+/* #farmer-market-map {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0px;
 	left: 0px;
+} */
+.menu-button {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 40px;
+	height:  40px;
+	cursor: pointer;
+	i {
+		position: absolute;
+		width: 20px;
+		height: 3px;
+		top: 19px;
+		right: 10px;
+		background-color: #ffffff;
+		-webkit-transition: all $animation ease-in;
+		-o-transition: all $animation ease-in;
+		transition: all $animation ease-in;
+	}
+	i::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		top: -5px;
+		background-color: #ffffff;
+		-webkit-transition: all $animation ease-in;
+		-o-transition: all $animation ease-in;
+		transition: all $animation ease-in;
+	}
+	i::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		top: 5px;
+		background-color: #ffffff;
+		-webkit-transition: all $animation ease-in;
+		-o-transition: all $animation ease-in;
+		transition: all $animation ease-in;
+	}
+}
+.menu-button.menu-active {
+	i {
+		background-color: rgba(white, 0);
+	}
+	i::before {
+		top: 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	i::after {
+		top: 0;
+		-webkit-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+}
+.map-header {
+	width: 100%;
+	height: 60px;
+	background-color: rgba($gradientColor1, 0.6);
+	position: absolute;
+	top: 0;
+	z-index: 99999;
+	-webkit-transition: all $animation ease-in;
+	-o-transition: all $animation ease-in;
+	transition: all $animation ease-in;
+	&.menu-active {
+		-webkit-transform: translateX(75%);
+		-ms-transform: translateX(75%);
+		-o-transform: translateX(75%);
+		transform: translateX(75%);
+	}
+
 }

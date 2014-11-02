@@ -140,10 +140,18 @@ body {
 	height: 100%;
 	width: 100%;
 	right: 0;
-	transition: 0.25s;
+
+	-webkit-transition: all 0.3s ease-in;
+	-o-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
 }
 #main-view-container.collapsed {
-	right: -80%;
+	/*right: -80%;*/
+	
+	-webkit-transform: translateX(75%);
+	-ms-transform: translateX(75%);
+	-o-transform: translateX(75%);
+	transform: translateX(75%);
 }
 
 
@@ -295,5 +303,6 @@ body {
 
 
 /*----------- info -*/
+
 
 
