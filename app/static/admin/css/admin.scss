@@ -183,12 +183,46 @@ h3 {
 	line-height: 20px;
 }
 textarea {
-	font-size: 18px;
-	color: $bodyTextBlack;
-	line-height: 20px;
 	border: none;
-	border-bottom: dotted 1px $gradientColor1;
+	display: block;
+	width: 100%;
+	padding: 0px;
+	box-sizing: border-box;
+	padding: 4px 8px;
 }
+input {
+	border: none;
+	display: block;
+	width: 100%;
+	padding: 0px;
+	box-sizing: border-box;
+	padding: 4px 8px;
+
+}
+div.textarea,
+div.input {
+	position: relative;
+	border-bottom: solid 1px $highlightColor;
+	&:before {
+		content: '';
+		width: 1px;
+		height: 6px;
+		background-color: $highlightColor;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+	&:after {
+		content: '';
+		width: 1px;
+		height: 6px;
+		background-color: $highlightColor;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+}
+
 h4 {
 	font-size: 16px;
 	color: #999999;
@@ -427,6 +461,24 @@ input {
 					padding-bottom: 3px;
 					word-break: break-all;
 				}
+			}
+			.address {
+				textarea, input {		
+					font-size: 18px;
+					color: $bodyTextBlack;
+					line-height: 20px;
+				}
+				.textarea, .input {
+					position: relative;
+					margin-bottom: 20px;
+					h6 {
+						position: absolute;
+						margin: 0;
+						bottom: -16px;
+						padding: 0 8px;
+					}
+				}
+				
 			}
 			.program td {
 				padding-right: 50px;

@@ -194,11 +194,43 @@ h3 {
   line-height: 20px; }
 
 textarea {
-  font-size: 18px;
-  color: #4c4c4c;
-  line-height: 20px;
   border: none;
-  border-bottom: dotted 1px #1B905C; }
+  display: block;
+  width: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+  padding: 4px 8px; }
+
+input {
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+  padding: 4px 8px; }
+
+div.textarea,
+div.input {
+  position: relative;
+  border-bottom: solid 1px #FFD740; }
+  div.textarea:before,
+  div.input:before {
+    content: '';
+    width: 1px;
+    height: 6px;
+    background-color: #FFD740;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+  div.textarea:after,
+  div.input:after {
+    content: '';
+    width: 1px;
+    height: 6px;
+    background-color: #FFD740;
+    position: absolute;
+    right: 0;
+    bottom: 0; }
 
 h4 {
   font-size: 16px;
@@ -409,6 +441,18 @@ input {
         padding-top: 3px;
         padding-bottom: 3px;
         word-break: break-all; }
+    .view main div.market .address textarea, .view main div.market .address input {
+      font-size: 18px;
+      color: #4c4c4c;
+      line-height: 20px; }
+    .view main div.market .address .textarea, .view main div.market .address .input {
+      position: relative;
+      margin-bottom: 20px; }
+      .view main div.market .address .textarea h6, .view main div.market .address .input h6 {
+        position: absolute;
+        margin: 0;
+        bottom: -16px;
+        padding: 0 8px; }
     .view main div.market .program td {
       padding-right: 50px; }
   .view main .preview-wrapper {
@@ -562,7 +606,7 @@ input {
   -webkit-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in; }
-  .map-header.menu-active {
+  #map-view .map-header.menu-active {
     -webkit-transform: translateX(75%);
     -ms-transform: translateX(75%);
     -o-transform: translateX(75%);
