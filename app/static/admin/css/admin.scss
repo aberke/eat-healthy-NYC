@@ -28,7 +28,7 @@ $bodyTextBlack : #4c4c4c;
 $headerHeight : 60px;
 $footerHeight : 60px;
 
-$animation: 0.3s;
+$animation: 0.2s;
 
 $menuHeight : 60px;
 
@@ -376,6 +376,21 @@ input {
 			bottom: -28px;
 			right: 20px;
 		}
+
+		.roundBtn.finish {
+			display: none;
+		}
+		.roundBtn.edit {
+			display: block;
+		}
+		&.edit-mode {
+			.roundBtn.finish {
+				display: block;
+			}
+			.roundBtn.edit {
+				display: none;
+			}
+		}
 	}
 	main {
 		ul.markets {
@@ -438,7 +453,7 @@ input {
 				margin-bottom: 8px;
 			}
 			table {
-				display: block;	
+				width: 100%;
 			    border-bottom: 0;
 			    border-spacing: 0;
 				tr {
@@ -454,7 +469,6 @@ input {
 					padding-bottom: 3px;
 					padding-right: 20px;
 					white-space: nowrap;
-					width: 30%;
 				}
 				td {
 					line-height: 18px;

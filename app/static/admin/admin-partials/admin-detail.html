@@ -1,4 +1,4 @@
-<header>
+<header class="edit-mode">
 	<div class="toolBar">
 		<div class="back icon"></div>
 		<div class="search icon btn"
@@ -8,10 +8,10 @@
 		ng-model="searchText"
 		ng-focus="searchActive">
 	<h2	ng-click="searchActive = !searchActive">{{market.name}}</h2>
-	<div class="roundBtn edit icon hidden"></div>
+	<div class="roundBtn edit icon"></div>
 	<div class="roundBtn finish icon "></div>
 </header>
-<main class="edit-mode">
+<main class="">
 	<div class="market">
 		<div class="address icon">
 			<h6>address</h6>
@@ -111,7 +111,8 @@ to
 		</div>
 		<div class="season icon">
 			<h6>season</h6>
-			<table class="preview-wrapper">
+			<div class="preview-wrapper">
+			<table>
 			<tbody>
 				<tr>
 					<th>YEAR ROUND</th>
@@ -128,7 +129,9 @@ to
 				</tr>
 			</tbody>
 			</table>
-			<table class="edit-wrapper">
+			</div>
+			<div class="edit-wrapper">
+			<table>
 			<tbody>
 				<tr>
 					<th>YEAR ROUND</th>
@@ -155,10 +158,12 @@ to
 				</tr>
 			</tbody>
 			</table>
+			</div>
 		</div>
 		<div class="program icon">
 			<h6>program</h6>
-			<table class="preview-wrapper">
+			<div class="preview-wrapper">
+			<table>
 			<tbody>
 				<tr>
 					<td>FMNP</td>
@@ -174,7 +179,9 @@ to
 				</tr>
 			</tbody>
 			</table>
-			<table class="edit-wrapper">
+			</div>
+			<div class="edit-wrapper">
+			<table>
 			<tbody>
 				<tr>
 					<td>
@@ -201,10 +208,12 @@ to
 				</tr>
 			</tbody>
 			</table>
+			</div>
 		</div>
 		<div class="contact icon">
 			<h6>contact</h6>
-			<table class="preview-wrapper">
+			<div class="preview-wrapper">
+			<table>
 			<tbody>
 				<tr>
 					<th>WEBSITE</th>
@@ -221,11 +230,13 @@ to
 				</tr>
 			</tbody>
 			</table>
-			<table class="edit-wrapper">
+			</div>
+			<div class="edit-wrapper">
+			<table>
 			<tbody>
 				<tr>
-					<th>WEBSITE</th>
-					<td>
+					<th width="30">WEBSITE</th>
+					<td width="70">
 					<div class="input">
 						<input type="text">
 					</div>
@@ -242,6 +253,7 @@ to
 				</tr>
 			</tbody>
 			</table>
+			</div>
 		</div>
 	</div>
 </main>
