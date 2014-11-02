@@ -27,6 +27,10 @@ FarmersMarketsAdminApp.config(function($routeProvider) {
 			templateUrl: '/static/admin/admin-partials/admin-detail.html',
 			controller: AdminDetailController
 		})
+		.when('/admin/detail/new', {
+			templateUrl: '/static/admin/admin-partials/admin-detail.html',
+			controller: AdminDetailController
+		})
 
 		/*------------------------------------------------------- client views -*/
 

@@ -117,5 +117,4 @@ var APIservice = function($http, $q){
   this.GETmarkets = function() {
     return this.GET('/markets');
   };
-
 };

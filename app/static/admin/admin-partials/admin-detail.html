@@ -1,17 +1,10 @@
-<header class="edit-mode">
-	<div class="toolBar">
-		<div class="back icon"></div>
-		<div class="search icon btn"
-			 ng-click="searchActive = !searchActive"></div>
-	</div>
-	<input type="text" placeholder="Search by:"
-		ng-model="searchText"
-		ng-focus="searchActive">
-	<h2	ng-click="searchActive = !searchActive">{{market.name}}</h2>
-	<div class="roundBtn edit icon"></div>
-	<div class="roundBtn finish icon "></div>
+<header ng-class="{'edit-mode': editMode==true}">
+	<h2>{{market.name}}</h2>
+	<div ng-click="edit()" class="roundBtn edit icon"></div>
+	<div ng-click="save()" class="roundBtn finish icon"></div>
 </header>
-<main class="edit-mode">
+
+<main ng-class="{'edit-mode': editMode==true}">
 	<div class="market">
 		<div class="address icon">
 			<h6>address</h6>
