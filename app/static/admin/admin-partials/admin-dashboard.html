@@ -1,11 +1,11 @@
-<header>
+<header ng-class="{'search-active': searchActive}">
     <div class="toolBar">
         <div class="search icon btn" ng-click="searchActive = !searchActive"></div>
     </div>
     <input type="text" placeholder="Search by:"
         ng-model="searchText"
-        ng-focus="searchActive">
-    <h1 ng-click="searchActive = !searchActive">Dashboard</h1>
+        >
+    <h1 >Dashboard</h1>
     <div ng-click="newMarket()" class="roundBtn plus icon"></div>
 </header>
 <main>

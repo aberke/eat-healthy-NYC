@@ -325,7 +325,7 @@ input[type="time"] {
 		background-color: rgba($gradientColor2, 0.7);
 	}
 
-	.search-active header input {
+	.search-active input {
 		display: block;
 	}
 	
@@ -351,13 +351,15 @@ input[type="time"] {
 			}
 		}
 		.textarea {
-			margin: 12px 16px 28px 72px;
+			margin: 12px 16px 8px 72px;
+			padding: 0;
 		}
 		textarea {		
+			padding: 4px 8px;
 			font-size: 24px;
 			line-height: 28px;
 			color: rgba(255, 255, 255, 0.87);
-			background-color: rgba(0,0,0,0.2);
+			background-color: rgba(0,0,0,0.1);
 		}
 
 		.toolBar {
