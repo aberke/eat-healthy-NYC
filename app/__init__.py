@@ -20,7 +20,7 @@ from basic_auth import requires_auth
 #--------------------------------------------------------------
 #- Configuration ----------------------------------------------
 
-app = Flask('app')
+app = Flask('app', static_folder='static', static_url_path='')
 app.config.from_object('config')
 Compress(app)
 

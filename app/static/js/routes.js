@@ -20,7 +20,7 @@ FarmersMarketsApp.config(function($routeProvider) {
 
 		/*- client views ----------------------------------------------*/
 		.when('/', {
-			templateUrl: '/static/html/partials/map.html',
+			templateUrl: '/html/partials/map.html',
 			controller: MapController,
 		})
 

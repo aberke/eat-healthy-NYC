@@ -1,0 +1,11 @@
+# Robots & web crawlers are welcome
+# <3 Alex
+#
+User-agent: *
+Disallow: /admin/
+
+# Existing domain names:
+# 	eat-healthy-nyc.herokuapp.com
+#	www.farmersmarkets.works
+#	www.farmers-markets.nyc
+Host: www.farmers-markets.nyc

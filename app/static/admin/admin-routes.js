@@ -20,15 +20,15 @@ FarmersMarketsAdminApp.config(function($routeProvider) {
 
 		/*- client views ----------------------------------------------*/
 		.when('/admin', {
-			templateUrl: '/static/admin/admin-partials/admin-dashboard.html',
+			templateUrl: '/admin/admin-partials/admin-dashboard.html',
 			controller: AdminDashboardController
 		})
 		.when('/admin/detail/:marketId', {
-			templateUrl: '/static/admin/admin-partials/admin-detail.html',
+			templateUrl: '/admin/admin-partials/admin-detail.html',
 			controller: AdminDetailController
 		})
 		.when('/admin/detail/new', {
-			templateUrl: '/static/admin/admin-partials/admin-detail.html',
+			templateUrl: '/admin/admin-partials/admin-detail.html',
 			controller: AdminDetailController
 		})
 

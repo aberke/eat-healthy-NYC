@@ -1,9 +1,14 @@
-eat-healthy-NYC
+Farmers Markets NYC
 ==============
 
-New York City Department of Health BigApps challenge
+Please contribute - pull requests and other contributions welcomed!
+If you have difficulties getting started, submit a git issue.
 
-It's alive: <http://eat-healthy-nyc.herokuapp.com>
+NY Farmers Markets: Interactive map and admin portal.
+Let local foodies marry the tech savy and bring sustainable farming into the 21st century.
+This is a mobile first application.
+
+It's alive: <http://www.farmers-markets.nyc>
 
 
 Functionality
@@ -98,6 +103,15 @@ Interface in ```/data/__init__.py```
 	- environment defaults to ```DEVELOPMENT```
 
 
+Ops notes
+---
+Hosted on heroku: <http://eat-healthy-nyc.herokuapp.com>
+Domains: 
+	- <http://www.farmers-markets.nyc>
+	- <http://www.farmersmarkets.works>
+
+
+
 TODO
 ---
 
@@ -111,9 +125,6 @@ TODO
 
 - put google analytics in controller?
 
-
-
-- buy domain name
 
 - do better with open/closed status
 	- check for open-date/close-date

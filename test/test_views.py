@@ -34,6 +34,11 @@ class ViewsTestCase(BaseTestCase):
 	def test_base_view(self):
 		self.expect_view_200('/')
 
+	def test_robots_view(self):
+		rv = self.app.get('/robots.txt')
+		self.assertEqual(rv.status_code, 200)
+		self.assertTrue(int(rv.headers['Content-Length']) > 50)
+
 	def test_admin_view(self):
 		# admin view is protected with basic auth
 		rv = self.app.get('/admin')

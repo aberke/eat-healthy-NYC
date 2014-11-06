@@ -3,7 +3,7 @@
 
 var MarkerFactory = function() {
 
-	this.iconBaseURL = window.location.origin + "/static/icon/";
+	this.iconBaseURL = window.location.origin + "/icon/";
   
   /* Shapes define the clickable region of the icon.
      Type defines HTML <area> element 'poly' which traces out a polygon as a series of X,Y points. The final
