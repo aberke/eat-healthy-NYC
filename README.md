@@ -47,9 +47,7 @@ $ source venv/bin/activate
 * Install mongo and run locally with ```$ mongod```
 * Initialize database from the CSV files
 ```
-$ python
->>> from app.data import initialize_markets
->>> initialize_markets()
+$ python -c 'from app.data import initialize_markets; initialize_markets()'
 ```
 
 * Make sure all works by running the tests (see documentation below)
