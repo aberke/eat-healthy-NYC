@@ -238,7 +238,3 @@ function setUserMarker(clientLocation) {
 	google.maps.event.addDomListener(window, 'load',function() { initialize(); });
 }
 
-
-
-
-
