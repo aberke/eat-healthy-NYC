@@ -202,9 +202,11 @@ body {
 #market-info-outter-container {
 	position: absolute;
 	bottom: 0;
+	right: 0;
 	overflow: auto;
-	height: 45%;
+	max-height: 45%;
 	width: 100%;
+	max-width: 440px;
 	background-color: #f9f4e5;
 	z-index: 3; /* 1 more than key*/
 }
