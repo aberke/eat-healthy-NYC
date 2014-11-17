@@ -107,8 +107,8 @@ Ops notes
 ---
 Hosted on heroku: <http://eat-healthy-nyc.herokuapp.com>
 Domains: 
-	- <http://www.farmers-markets.nyc>
-	- <http://www.farmersmarkets.works>
+	- <a href="http://www.farmers-markets.nyc">www.farmers-markets.nyc</a>
+	- <a href="http://www.farmersmarkets.works">www.farmersmarkets.works</a>
 
 
 
