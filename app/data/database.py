@@ -42,10 +42,6 @@ def get_db():
 	return db
 
 
-def drop_markets(database=None):
-	database = database if database else connect
-	database.markets.remove()
-
-def drop_all(database=None, environment=None, **kwargs):
-	database = database if database else connect(environment=environment)
-	drop_markets(database=database)
+def drop_all(db=None, environment=None, **kwargs):
+	db = db if db else connect(environment=environment)
+	db.markets.remove()

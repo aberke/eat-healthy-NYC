@@ -21,17 +21,11 @@ from app.data import database
 
 class BaseTestCase(unittest.TestCase):
 
-	# - Setup/Teardown -----------------------------------------------
 	def setUp(self):
 		app.config['TESTING'] = True
 		self.app = app.test_client()
-
-	def tearDown(self):
 		database.drop_all()
 
-	# ----------------------------------------------- Setup/Teardown -
-
-	# - Utility Methods ----------------------------------------------
 	def assertDataMatch(self, test_data, response_data, keys=None):
 		""" Assert test_data and response_data match across keys or test_data.keys()"""
 		keys = keys if keys else test_data.keys()
@@ -48,5 +42,3 @@ class BaseTestCase(unittest.TestCase):
 		return {
     		'Authorization': 'Basic ' + b64encode("{0}:{1}".format(BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD))
 		}
-
-	# ----------------------------------------------- Utility Methods -
