@@ -10,6 +10,9 @@
 
 import os
 
+
+FARMERS_MARKETS_DATA_FILEPATH = './app/data/state-farmers-markets.csv'
+
 # test.py sets environment to TESTING, heroku has environment as PRODUCTION
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'DEVELOPMENT')
 
