@@ -4,7 +4,6 @@
 #	Author: Alexandra Berke (aberke)
 #
 #
-#
 #	util file
 #
 #
@@ -15,8 +14,6 @@ from flask import Response
 import json
 from bson import ObjectId
 from datetime import datetime
-
-
 
 
 class JSONEncoder(json.JSONEncoder):

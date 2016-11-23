@@ -11,8 +11,8 @@
 #--------------------------------------------------------------------------------
 #********************************************************************************
 
-import json
 from base64 import b64encode # for basic auth
+import json
 
 from test_base import BaseTestCase
 
@@ -75,8 +75,6 @@ class APItestCase(BaseTestCase):
 		all_markets = self.GET_data('/api/markets')
 		self.assertEqual([], all_markets)
 
-	
-
 
 class POSTtestCase(APItestCase):
 
@@ -138,7 +136,6 @@ class POSTtestCase(APItestCase):
 		self.assertEqual(3, len(get_all_3))
 
 
-
 class DELETEtestCase(APItestCase):
 
 	def test_requires_auth(self):
@@ -185,7 +182,6 @@ class DELETEtestCase(APItestCase):
 		# 3.
 		get_all = self.GET_data('/api/markets')
 		self.assertEqual(0, len(get_all))
-
 
 
 class PUTtestCase(APItestCase):
@@ -254,27 +250,3 @@ class PUTtestCase(APItestCase):
 		json_data = json.loads(rv.data)
 		self.assertEqual(rv.status_code, 500)
 		self.assertIn('error', json_data)
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

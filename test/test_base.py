@@ -11,14 +11,12 @@
 #--------------------------------------------------------------------------------
 #********************************************************************************
 
+from base64 import b64encode # for basic auth
 import unittest
 
 from app import app
 import config
 from app.data import database
-
-from base64 import b64encode # for basic auth
-
 
 
 class BaseTestCase(unittest.TestCase):
@@ -51,6 +49,4 @@ class BaseTestCase(unittest.TestCase):
     		'Authorization': 'Basic ' + b64encode("{0}:{1}".format(BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD))
 		}
 
-
 	# ----------------------------------------------- Utility Methods -
-

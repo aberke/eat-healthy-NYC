@@ -13,9 +13,9 @@
 #--------------------------------------------------------------------------------
 #*********************************************************************************
 
-import re
 import calendar
 from datetime import date
+import re
 
 # this is what's returned
 KEYNAME_VALUE_DICTIONARY = {
@@ -52,7 +52,7 @@ KEYNAME_CONVERTER_DICT = {
 	"Address Line 1": "address-line-1",
 	"Zip": "zipcode",
 
-	# a bough has the same boundaries as a county of the state
+	# a borough has the same boundaries as a county of the state
 	"Borough": "county",
 	"County": "county",
 
@@ -70,12 +70,10 @@ VALUE_CONVERTER_DICT = {
 	"N": False,
 }
 
-
 # for date normalizing
 YEAR = date.today().year
 MONTHS_LIST = ['January','February','March','April','May','June','July','August','September','October','November','December']
 DAYS_LIST = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
 
 
 def normalize_datetime(datum):
@@ -139,6 +137,7 @@ def normalize_datetime(datum):
 	datum = add_open_close_date(datum)
 	return datum
 
+
 def add_open_close_date(datum):
 	# if Year-round then say so and return early
 	if "Operation Season" in datum and datum["Operation Season"] == "Year-round":
@@ -171,6 +170,7 @@ def add_open_close_date(datum):
 
 	return datum
 
+
 def get_date_object(string):
 	"""
 	Helper method to add_open_close_date
@@ -193,7 +193,6 @@ def get_date_object(string):
 				"date": int(date),
 			}
 	return None
-
 
 
 def add_days(datum):
@@ -263,8 +262,6 @@ def clean(data_set):
 	return data_set
 
 
-
-
 def get_market_name(datum):
 	"""
 	@param: {dictionary} datum from which to extract market name value
@@ -276,11 +273,3 @@ def get_market_name(datum):
 		raise Exception("There is a farmers-market data_set without key 'name' or 'Market Name'")
 
 	return datum['Market Name']
-
-
-
-
-
-
-
-
