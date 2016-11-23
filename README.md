@@ -77,13 +77,11 @@ Tests
 - Run tests selectively by commenting/uncommenting items in testmodules list in ```run_tests.py```
 
 
-data
+Data
 ---
 
-- state-farmers-markets.csv 
-	- from https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
-- farmers-markets-2014.csv
-	- from eat healthy NYC
+Data source is from https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+- Stored as state-farmers-markets.csv
 
 Data built from csv files and stored in Mongo DB database
 
