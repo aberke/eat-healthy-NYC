@@ -11,14 +11,10 @@
 #--------------------------------------------------------------------------------
 #********************************************************************************
 
-
 from test_base import BaseTestCase
 
 
-
-
 class ViewsTestCase(BaseTestCase):
-
 
 	# - Utility Methods ----------------------------------------------
 	
@@ -29,7 +25,6 @@ class ViewsTestCase(BaseTestCase):
 		self.assertTrue(int(rv.headers['Content-Length']) > 500)
 	
 	# ----------------------------------------------- Utility Methods -
-
 
 	def test_base_view(self):
 		self.expect_view_200('/')
@@ -46,13 +41,3 @@ class ViewsTestCase(BaseTestCase):
 		rv = self.app.get('/admin', headers=self.basic_auth_headers())
 		self.assertEqual(rv.status_code, 200)
 		self.assertTrue(int(rv.headers['Content-Length']) > 500)
-
-
-
-
-
-
-
-
-
-

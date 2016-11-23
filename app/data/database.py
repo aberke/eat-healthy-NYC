@@ -9,56 +9,19 @@
 #--------------------------------------------------------------------------------
 #*********************************************************************************
 
-
-from pymongo import MongoClient
 import os
 
+from pymongo import MongoClient
 
+from config import MONGO_CONFIG
 
-# - MONGO CONFIG----------------------------------
-# if development : host is "mongodb://localhost:27017"
-# if production or staging: db is set in host URI, host is in "MONGOHQ_URL" env variable found in '$ heroku config' command
-# if TESTING: db is testing specific db
-
-# environment options are: DEVELOPMENT, STAGING, PRODUCTION
-ENVIRONMENT = os.environ.get('ENVIRONMENT', 'DEVELOPMENT')
-
-# separate configuration for each environment
-mongo_config = {
-	'TESTING': {},
-	'DEVELOPMENT': {},
-	'STAGING': {},
-	'PRODUCTION': {},
-}
-
-# TESTING configuration
-mongo_config['TESTING']['MONGO_HOST']	= "mongodb://localhost:27017"
-mongo_config['TESTING']['MONGO_DB'] 	= "TESTING-eat-healthy-NYC"
-
-# DEVELOPMENT configuration
-mongo_config['DEVELOPMENT']['MONGO_HOST']	= "mongodb://localhost:27017"
-mongo_config['DEVELOPMENT']['MONGO_DB'] 	= "eat-healthy-NYC"
-
-# STAGING configuration
-mongo_config['STAGING']['MONGO_HOST'] 		= "TODO"
-mongo_config['STAGING']['MONGO_DB'] 		= "TODO"
-
-# PRODUCTION configuration
-mongo_config['PRODUCTION']['MONGO_HOST'] 	= os.environ.get('MONGOHQ_URL', None)
-mongo_config['PRODUCTION']['MONGO_DB'] 		= "app27181822"
-
-# ---------------------------------- MONGO CONFIG-
-
-
-
-# -----------------------------------------------------
 
 def connect(environment=None):
+	if not environment:
+		environment = os.environ.get('ENVIRONMENT', 'DEVELOPMENT')
 
-	environment = environment if environment else ENVIRONMENT
-
-	HOST = mongo_config[environment]['MONGO_HOST']
-	DB 	 = mongo_config[environment]['MONGO_DB']
+	HOST = MONGO_CONFIG[environment]['MONGO_HOST']
+	DB = MONGO_CONFIG[environment]['MONGO_DB']
 	
 	try:
 		client = MongoClient(HOST)
@@ -71,10 +34,12 @@ def connect(environment=None):
 		print '------ERROR--------\n' + msg + '\n------ERROR-------'
 		raise Exception(msg)
 
+
 db = connect()
+
+
 def get_db():
 	return db
-
 
 
 def drop_markets(database=None):
@@ -84,8 +49,3 @@ def drop_markets(database=None):
 def drop_all(database=None, environment=None, **kwargs):
 	database = database if database else connect(environment=environment)
 	drop_markets(database=database)
-	
-
-# -----------------------------------------------------
-
-

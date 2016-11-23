@@ -10,24 +10,22 @@
 #--------------------------------------------------------------------------------
 #********************************************************************************
 
-
-from bson import ObjectId
 from datetime import datetime 
 
+from bson import ObjectId
+
 import database
+
+
 db = database.get_db()
 
-
-
-#---------------------------------------------------------------------
-#- Interface ---------------------------------------------------------
 
 def find_markets(id=None):
 	""" TODO: test coverage 
 	"""
 	query = {}
 	if id:
-		query['_id'] = sanitize_id(id)
+		query['_id'] = _sanitize_id(id)
 	markets = db.markets.find(query)
 	return [m for m in markets]
 
@@ -48,58 +46,47 @@ def create_market(market_data):
 	if '_id' in market_data:
 		raise Exception("Tried to create market with _id")
 
-	market_data = sanitize_market_data(market_data)
-	market_data = stamp_last_modified(market_data)
+	market_data = _sanitize_market_data(market_data)
+	market_data = _stamp_last_modified(market_data)
 	return db.markets.insert(market_data)
 
 
-def delete_market(id):
-	id = sanitize_id(id)
-	db.markets.remove({ "_id": id })
+def delete_market(market_id):
+	market_id = _sanitize_id(market_id)
+	db.markets.remove({"_id": market_id})
 
 
-def update_market(id, data):
+def update_market(market_id, data):
 	"""
 	Only allowed to update list info 
 	"""
-	data = sanitize_market_data(data)
-	data = stamp_last_modified(data)
+	data = _sanitize_market_data(data)
+	data = _stamp_last_modified(data)
 
-	ret = db.markets.update({ "_id": sanitize_id(id) }, { "$set": data})
+	ret = db.markets.update({"_id": _sanitize_id(market_id)}, {"$set": data})
 	
 	if not ret['updatedExisting']:
 		raise Exception("update_market failed to update an existing market")
 	return ret
 
-#--------------------------------------------------------- Interface -
-#---------------------------------------------------------------------
 
-
-
-
-def sanitize_id(id):
+def _sanitize_id(id):
 	return ObjectId(id)
 
 
-def sanitize_market_data(data):
+def _sanitize_market_data(data):
 	"""
 	Assert only certain types make it into database and are queried for 
 	"""
 	if '_id' in data:
-		data['_id'] = sanitize_id(data['_id'])
+		data['_id'] = _sanitize_id(data['_id'])
 	return data
 
 
-def date_now():
-	return str(datetime.utcnow())
-
-
-def stamp_last_modified(data):
+def _stamp_last_modified(data):
 	"""
 	@param {dict} data  -- data with which to add key/value pair ('last_modified', UTC now date)
 	Returns original data with extra key/value pair ('last_modified', UTC now date)
 	"""
-	data['last_modified'] = date_now()
+	data['last_modified'] = str(datetime.utcnow())
 	return data
-
-
