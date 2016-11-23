@@ -46,9 +46,6 @@
 # "FMNP": true,
 # "Stellar": false
 #
-#
-# state-farmers-markets IS NOT a complete superset of farmers-markets-2014
-#
 #--------------------------------------------------------------------------------
 #*********************************************************************************
 
@@ -58,7 +55,7 @@ import re
 import sanitizers
 import database
 
-DATA_FILES = ['./app/data/farmers-markets-2014.csv', './app/data/state-farmers-markets.csv']
+DATA_FILES = ['./app/data/state-farmers-markets.csv']
 
 
 
