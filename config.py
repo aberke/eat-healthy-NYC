@@ -38,14 +38,14 @@ MONGO_CONFIG = {
 		'MONGO_HOST': 'mongodb://localhost:27017',
 		'MONGO_DB': 'eat-healthy-NYC',
 	},
-	# If production or staging: db is set in host URI, is in "MONGOHQ_URL" env
+	# If production or staging: db is set in host URI
 	# variable found in '$ heroku config' command
 	'STAGING': {
 		'MONGO_HOST': 'TODO',
 		'MONGO_DB': 'TODO',
 	},
 	'PRODUCTION': {
-		'MONGO_HOST': os.environ.get('MONGOHQ_URL', None),
-		'MONGO_DB': 'app27181822',
+		'MONGO_HOST': os.environ.get('MONGODB_URI', None),
+		'MONGO_DB': os.environ.get('DB_NAME', 'heroku_jr16sbq9'),
 	},
 }
