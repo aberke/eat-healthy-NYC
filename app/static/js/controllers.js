@@ -120,7 +120,7 @@ function isPositionNY(Latitude, Longitude, Callback) {
 		}
 		return Callback(false); 	
 	}
-    $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + Latitude + "," + Longitude)
+    $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + Latitude + "," + Longitude)
         .success(onSuccess)
         .error(onError);
 
