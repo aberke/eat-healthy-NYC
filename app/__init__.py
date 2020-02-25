@@ -11,7 +11,7 @@
 #*********************************************************************************
 
 from flask import Flask, send_file, request
-from flask.ext.compress import Compress
+from flask_compress import Compress
 import json
 from util import respond500, respond200
 from basic_auth import requires_auth
