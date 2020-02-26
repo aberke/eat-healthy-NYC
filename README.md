@@ -1,8 +1,14 @@
 Farmers Markets NYC
 ==============
 
-Please contribute - pull requests and other contributions welcomed!
-If you have difficulties getting started, submit a git issue.
+
+Advancing access to healthy and sustainable eating, with a focus on low income families.
+
+
+This project has been deprecated.
+
+### Once Upon a Time
+
 
 NY Farmers Markets: Interactive map and admin portal.
 Let local foodies marry the tech savy and bring sustainable farming into the 21st century.
