@@ -1,6 +1,7 @@
 Farmers Markets NYC
 ==============
 
+![Demo Image](demo-assets/desktop-gif.gif)
 
 Advancing access to healthy and sustainable eating, with a focus on low income families.
 
